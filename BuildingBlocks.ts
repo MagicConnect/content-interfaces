@@ -2,6 +2,7 @@
 export enum MonsterType {
   Bug = 'Bug',
   Celestial = 'Celestial',
+  Corruption = 'Corruption',
   Flying = 'Flying',
   Humanoid = 'Humanoid',
   Mechanical = 'Mechanical',

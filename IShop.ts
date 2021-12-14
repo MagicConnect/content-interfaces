@@ -1,5 +1,5 @@
 
-export enum ShopReset {
+export const enum ShopReset {
   None = 'None',
   Daily = 'Daily',
   Weekly = 'Weekly',

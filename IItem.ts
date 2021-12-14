@@ -1,5 +1,5 @@
 
-export enum ItemType {
+export const enum ItemType {
   None = 'None',
   
   Weapon = 'Weapon',

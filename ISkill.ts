@@ -1,13 +1,13 @@
 
 import { Element, Stat, StatusEffect } from './BuildingBlocks';
 
-export enum SkillValidTargets {
+export const enum SkillValidTargets {
   All = 'All',                                      // allow targetting for all units on both sides
   Enemies = 'Enemies',                              // allow targetting only for enemies
   Allies = 'Allies',                                // allow targetting only for allies
 }
 
-export enum SkillActionPattern {
+export const enum SkillActionPattern {
   SingleTarget = 'SingleTarget',                    // single target attack
   All = 'All',                                      // all targets
   SmallSquare = 'SmallSquare',                      // 2x2 square

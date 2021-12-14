@@ -1,5 +1,5 @@
 
-export const enum MonsterType {
+export enum MonsterType {
   Bug = 'Bug',
   Celestial = 'Celestial',
   Flying = 'Flying',
@@ -9,7 +9,7 @@ export const enum MonsterType {
   Undead = 'Undead'
 }
 
-export const enum Archetype {
+export enum Archetype {
   Attacker = 'Attacker',
   Caster = 'Caster',
   Defender = 'Defender',
@@ -17,7 +17,7 @@ export const enum Archetype {
   Ranger = 'Ranger'
 }
 
-export const enum Weapon {
+export enum Weapon {
   Axe = 'Axe',
   Bow = 'Bow',
   Dagger = 'Dagger',
@@ -27,7 +27,7 @@ export const enum Weapon {
   SwordAndShield = 'SwordAndShield'
 }
 
-export const enum Element {
+export enum Element {
   Neutral = 'Neutral',
   Fire = 'Fire',
   Ice = 'Ice',
@@ -37,7 +37,7 @@ export const enum Element {
   Light = 'Light'
 }
 
-export const enum StatusEffect {
+export enum StatusEffect {
 
   // unique debuffs
   Curse = 'Curse',        // outgoing damage reduced, incoming damage increased
@@ -76,7 +76,7 @@ export const enum StatusEffect {
   MEVADown = 'MEVADown',
 }
 
-export const enum Stat {
+export enum Stat {
   Attack = 'attack',
   Defense = 'defense',
   Magic = 'magic',

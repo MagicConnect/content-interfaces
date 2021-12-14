@@ -1,7 +1,7 @@
 import { Element, MonsterType, Stat, StatusEffect } from './BuildingBlocks';
 
 // enums for abilities
-export const enum AbilityTrigger {
+export enum AbilityTrigger {
   Always = 'Always',
 
   OnSelfDeath = 'OnSelfDeath',
@@ -22,7 +22,7 @@ export const enum AbilityTrigger {
   OnCombatStart = 'OnCombatStart'
 }
 
-export const enum AbilityEffect {
+export enum AbilityEffect {
   None = '', // used for editor
 
   // stat related
@@ -91,7 +91,7 @@ export const enum AbilityEffect {
 
 }
 
-export const enum AbilityTarget {
+export enum AbilityTarget {
   Self = 'Self',
   All = 'All',
 
@@ -112,7 +112,7 @@ export const enum AbilityTarget {
 
 }
 
-export const enum AbilityCondition {
+export enum AbilityCondition {
   None = '', // used for editor
 
   AboveHP = 'AboveHP',

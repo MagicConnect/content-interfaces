@@ -1,5 +1,6 @@
 
 export enum MonsterType {
+  Beast = 'Beast',
   Bug = 'Bug',
   Celestial = 'Celestial',
   Corruption = 'Corruption',

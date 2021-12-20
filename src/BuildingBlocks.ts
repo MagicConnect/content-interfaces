@@ -1,3 +1,5 @@
+import * as t from 'io-ts';
+import { enumT } from "./io-ts-enum"
 
 export enum MonsterType {
   Beast = 'Beast',
@@ -10,6 +12,7 @@ export enum MonsterType {
   Plant = 'Plant',
   Undead = 'Undead'
 }
+export const monsterTypeEnumT: t.Type<MonsterType> = enumT('MonsterType', MonsterType);
 
 export enum Archetype {
   Attacker = 'Attacker',
@@ -18,6 +21,7 @@ export enum Archetype {
   Healer = 'Healer',
   Ranger = 'Ranger'
 }
+export const archetypeEnumT: t.Type<Archetype> = enumT('Archetype', Archetype);
 
 export enum Weapon {
   Axe = 'Axe',
@@ -28,6 +32,7 @@ export enum Weapon {
   Staff = 'Staff',
   SwordAndShield = 'SwordAndShield'
 }
+export const weaponEnumT: t.Type<Weapon> = enumT('Weapon', Weapon);
 
 export enum Element {
   Neutral = 'Neutral',
@@ -38,6 +43,7 @@ export enum Element {
   Dark = 'Dark',
   Light = 'Light'
 }
+export const elementEnumT: t.Type<Element> = enumT('Element', Element);
 
 export enum StatusEffect {
 
@@ -77,6 +83,7 @@ export enum StatusEffect {
   PEVADown = 'PEVADown',
   MEVADown = 'MEVADown',
 }
+export const statusEffectEnumT: t.Type<StatusEffect> = enumT('StatusEffect', StatusEffect);
 
 export enum Stat {
   Attack = 'attack',
@@ -90,6 +97,22 @@ export enum Stat {
   Critical = 'critical',
   Accuracy = 'accuracy'
 }
+export const statEnumT: t.Type<Stat> = enumT('Stat', Stat);
 
 export type PrimaryStat = Stat.Attack | Stat.Defense | Stat.Magic | Stat.Special;
 export type SecondaryStat = Stat.HP | Stat.MP | Stat.MeleeEvasion | Stat.MagicEvasion | Stat.Critical | Stat.Accuracy;
+
+export const primaryStatT: t.Type<PrimaryStat> = t.union([
+  t.literal(Stat.Attack),
+  t.literal(Stat.Defense),
+  t.literal(Stat.Magic),
+  t.literal(Stat.Special),
+]);
+export const secondaryStatT: t.Type<SecondaryStat> = t.union([
+  t.literal(Stat.HP),
+  t.literal(Stat.MP),
+  t.literal(Stat.MeleeEvasion),
+  t.literal(Stat.MagicEvasion),
+  t.literal(Stat.Critical),
+  t.literal(Stat.Accuracy),
+]);

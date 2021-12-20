@@ -1,4 +1,5 @@
-import { Archetype, PrimaryStat, Stat } from './BuildingBlocks';
+import * as t from 'io-ts';
+import { Archetype, archetypeEnumT, PrimaryStat, primaryStatT, Stat, statEnumT } from './BuildingBlocks';
 
 export interface IEnemy {
   name: string;                           // character name
@@ -15,3 +16,18 @@ export interface IEnemy {
   abilities: string[];                    // character abilities
   skills: string[];                       // character skills
 }
+export const enemyT: t.Type<IEnemy> = t.type({
+  name: t.string,
+  art: t.string,
+  spritesheet: t.string,
+
+  primaryStat: primaryStatT,
+  basePoints: t.record(archetypeEnumT, t.number),
+  baseStats: t.record(statEnumT, t.number),
+
+  levelPoints: t.record(archetypeEnumT, t.number),
+  levelStats: t.record(statEnumT, t.number),
+
+  abilities: t.array(t.string),
+  skills: t.array(t.string),
+});

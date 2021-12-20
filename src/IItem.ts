@@ -1,7 +1,9 @@
+import * as t from 'io-ts';
+import { enumT } from './io-ts-enum';
 
 export enum ItemType {
   None = 'None',
-  
+
   Weapon = 'Weapon',
   Accessory = 'Accessory',
   ShopToken = 'ShopToken',
@@ -74,6 +76,8 @@ export enum ItemType {
   XPChipLarge = 'XPChipLarge',
 }
 
+export const itemTypeT = enumT('ItemType', ItemType);
+
 export interface IItem {
   name: string;
   art: string;
@@ -83,3 +87,16 @@ export interface IItem {
 
   cosmeticCharacterFor?: string;
 }
+
+export const itemT: t.Type<IItem> = t.intersection([
+  t.type({
+    name: t.string,
+    art: t.string,
+    description: t.string,
+    sellValue: t.number,
+    itemType: itemTypeT,
+  }),
+  t.partial({
+    cosmeticCharacterFor: t.string
+  })
+]);

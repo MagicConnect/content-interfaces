@@ -1,4 +1,6 @@
-import { Element, MonsterType, Stat, StatusEffect } from './BuildingBlocks';
+import * as t from 'io-ts';
+import { enumT } from './io-ts-enum';
+import { Element, elementEnumT, MonsterType, monsterTypeEnumT, Stat, statEnumT, StatusEffect, statusEffectEnumT } from './BuildingBlocks';
 
 // enums for abilities
 export enum AbilityTrigger {
@@ -21,6 +23,7 @@ export enum AbilityTrigger {
 
   OnCombatStart = 'OnCombatStart'
 }
+export const abilityTriggerEnumT: t.Type<AbilityTrigger> = enumT('AbilityTrigger', AbilityTrigger);
 
 export enum AbilityEffect {
   None = '', // used for editor
@@ -39,8 +42,8 @@ export enum AbilityEffect {
   SpecialGaugeLeech = 'SpecialGaugeLeech',
 
   // damage related
-  Counterattack = 'Counterattack', 
-  
+  Counterattack = 'Counterattack',
+
   OutgoingStatDamage = 'OutgoingStatDamage',
   IncomingStatDamage = 'IncomingStatDamage',
 
@@ -90,6 +93,7 @@ export enum AbilityEffect {
   ModifyBaseSkill = 'ModifyBaseSkill'
 
 }
+export const abilityEffectEnumT: t.Type<AbilityEffect> = enumT('AbilityEffect', AbilityEffect);
 
 export enum AbilityTarget {
   Self = 'Self',
@@ -111,6 +115,7 @@ export enum AbilityTarget {
   AllyNotHealer = 'AllyNotHealer',
 
 }
+export const abilityTargetEnumT: t.Type<AbilityTarget> = enumT('AbilityTarget', AbilityTarget);
 
 export enum AbilityCondition {
   None = '', // used for editor
@@ -141,6 +146,7 @@ export enum AbilityCondition {
 
   FirstTurns = 'FirstTurns'
 }
+export const abilityConditionEnumT: t.Type<AbilityCondition> = enumT('AbilityCondition', AbilityCondition);
 
 // interfaces for ability props / abilities
 
@@ -158,6 +164,20 @@ export interface IAbilityEffectProps {
   element?: Element;                    // the element imbued by the ability
   surviveDeathReboundValue?: number;    // the survive HP rebound value
 }
+export const abilityEffectPropsT: t.Type<IAbilityEffectProps> = t.partial({
+  effectTarget: abilityTargetEnumT,
+
+  isPercent: t.boolean,
+  baseValue: t.number,
+  baseStat: statEnumT,
+  convertToStat: statEnumT,
+  skillName: t.string,
+  monsterType: monsterTypeEnumT,
+  statusEffect: statusEffectEnumT,
+  // explodeRadius: t.number,
+  element: elementEnumT,
+  surviveDeathReboundValue: t.number,
+});
 
 export interface IAbilityConditionProps {
   isPercent?: boolean;                  // whether or not the condition relies on a percent
@@ -174,17 +194,41 @@ export interface IAbilityConditionProps {
 
   firstTurns?: number;                  // the number of turns at the start of combat that the ability applies for
 }
+export const abilityConditionPropsT: t.Type<IAbilityConditionProps> = t.partial({
+  isPercent: t.boolean,
+
+  hpValue: t.number,
+  mpValue: t.number,
+  spcValue: t.number,
+  enemyCount: t.number,
+  alliesCount: t.number,
+
+  selfStatusEffect: t.string,
+
+  archetypesInParty: t.number,
+
+  firstTurns: t.number,
+});
 
 export interface IAbilityEffect {
   value: AbilityEffect;
   props: IAbilityEffectProps;
   target: AbilityTarget;
 }
+export const abilityEffectT: t.Type<IAbilityEffect> = t.type({
+  value: abilityEffectEnumT,
+  props: abilityEffectPropsT,
+  target: abilityTargetEnumT,
+});
 
 export interface IAbilityCondition {
   value: AbilityCondition;
   props: IAbilityConditionProps;
 }
+export const abilityConditionT: t.Type<IAbilityCondition> = t.type({
+  value: abilityConditionEnumT,
+  props: abilityConditionPropsT,
+});
 
 export interface IAbility {
   name: string;
@@ -196,3 +240,18 @@ export interface IAbility {
 
   lbChanges: Record<number, IAbility & { shouldHide: boolean }>;
 }
+export const abilityT: t.Type<IAbility> = t.recursion('Ability', () =>
+  t.type({
+    name: t.string,
+    description: t.string,
+
+    trigger: abilityTriggerEnumT,
+    effects: t.array(abilityEffectT),
+    conditions: t.array(abilityConditionT),
+
+    lbChanges: t.record(t.number, t.intersection([
+      abilityT,
+      t.type({ shouldHide: t.boolean })
+    ])),
+  })
+);

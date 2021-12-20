@@ -1,9 +1,14 @@
-import { Archetype, PrimaryStat, Stat, Weapon } from './BuildingBlocks';
+import * as t from 'io-ts';
+import { Archetype, archetypeEnumT, PrimaryStat, primaryStatT, Stat, statEnumT, Weapon, weaponEnumT } from './BuildingBlocks';
 
 export interface ICharacterAbility {
   name: string;                           // the name of the ability group
   abilities: string[];                    // the abilities in the group
 }
+export const characterAbilityT: t.Type<ICharacterAbility> = t.type({
+  name: t.string,
+  abilities: t.array(t.string),
+});
 
 export interface ICharacter {
   name: string;                           // character name
@@ -28,3 +33,30 @@ export interface ICharacter {
   skills: string[];                       // character skills
   specialSkill: string;                   // character special ability
 }
+export const characterT: t.Type<ICharacter> = t.type({
+  name: t.string,
+  art: t.string,
+  spritesheet: t.string,
+
+  archetype: archetypeEnumT,
+  weapon: weaponEnumT,
+  stars: t.union([
+    t.literal(3),
+    t.literal(4),
+    t.literal(5),
+  ]),
+
+  primaryStat: primaryStatT,
+  basePoints: t.record(archetypeEnumT, t.number),
+  baseStats: t.record(statEnumT, t.number),
+
+  levelPoints: t.record(archetypeEnumT, t.number),
+  levelStats: t.record(statEnumT, t.number),
+
+  lbPoints: t.record(archetypeEnumT, t.number),
+  lbStats: t.record(statEnumT, t.number),
+
+  abilities: t.array(characterAbilityT),
+  skills: t.array(t.string),
+  specialSkill: t.string,
+});

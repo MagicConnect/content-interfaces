@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "outDir": "./lib"
+    "outDir": "./lib",
+    "lib": ["ES2017"],
+    "strict": true
   },
   "include": ["./src/**/*"]
 }

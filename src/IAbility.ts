@@ -1,6 +1,7 @@
 import * as t from 'io-ts';
 import { enumT } from './io-ts-enum';
 import { Element, elementEnumT, MonsterType, monsterTypeEnumT, Stat, statEnumT, StatusEffect, statusEffectEnumT } from './BuildingBlocks';
+import { intStringT } from './io-ts-integer-string-brand';
 
 // enums for abilities
 export enum AbilityTrigger {
@@ -238,7 +239,7 @@ export interface IAbility {
   effects: IAbilityEffect[];
   conditions: IAbilityCondition[];
 
-  lbChanges: Record<number, IAbility & { shouldHide: boolean }>;
+  lbChanges: Record<string, IAbility & { shouldHide: boolean }>;
 }
 export const abilityT: t.Type<IAbility> = t.recursion('Ability', () =>
   t.type({
@@ -249,7 +250,7 @@ export const abilityT: t.Type<IAbility> = t.recursion('Ability', () =>
     effects: t.array(abilityEffectT),
     conditions: t.array(abilityConditionT),
 
-    lbChanges: t.record(t.number, t.intersection([
+    lbChanges: t.record(intStringT, t.intersection([
       abilityT,
       t.type({ shouldHide: t.boolean })
     ])),

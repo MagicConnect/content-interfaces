@@ -1,4 +1,5 @@
 import * as t from 'io-ts';
+import { intStringT } from './io-ts-integer-string-brand';
 
 export interface IMapNodeDroppable {
   name: string;
@@ -82,7 +83,7 @@ export const mapT: t.Type<IMap> = t.type({
   name: t.string,
   art: t.string,
   nodes: t.array(mapNodeT),
-  nodeConnections: t.record(t.number, t.array(t.number)),
+  nodeConnections: t.record(intStringT, t.array(t.number)),
 
   activeStarts: t.string,
   activeEnds: t.string,

@@ -7,6 +7,9 @@ export enum ItemType {
   Weapon = 'Weapon',
   Accessory = 'Accessory',
   ShopToken = 'ShopToken',
+  
+  GeneralDraw = 'GeneralDraw',
+  LimitedDraw = 'LimitedDraw',
 
   WeaponThreeStarDraw = 'WeaponThreeStarDraw',
   WeaponFourStarDraw = 'WeaponFourStarDraw',

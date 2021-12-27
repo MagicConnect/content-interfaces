@@ -243,15 +243,14 @@ export const abilityConditionT: t.Type<IAbilityCondition> = t.type({
 });
 
 export interface IAbilityUtility {
+  name: string;
+  description: string;
   trigger: AbilityTrigger;
   effects: IAbilityEffect[];
   conditions: IAbilityCondition[];
 }
 
 export interface IAbility extends IIdentifiable, IAbilityUtility {
-  name: string;
-  description: string;
-
   lbChanges: Record<string, IAbilityUtility & { shouldHide: boolean }>;
 }
 
@@ -266,6 +265,8 @@ export const abilityT: t.Type<IAbility> = t.recursion('Ability', () =>
     conditions: t.array(abilityConditionT),
 
     lbChanges: t.record(intStringT, t.type({ 
+      name: t.string,
+      description: t.string,
       trigger: abilityTriggerEnumT,
       effects: t.array(abilityEffectT),
       conditions: t.array(abilityConditionT),

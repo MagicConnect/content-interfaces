@@ -1,4 +1,5 @@
 import * as t from 'io-ts';
+import { IIdentifiable } from './IIdentifiable';
 import { intStringT } from './io-ts-integer-string-brand';
 
 export interface IMapNodeDroppable {
@@ -12,7 +13,7 @@ export const mapNodeDroppableT: t.Type<IMapNodeDroppable> = t.type({
   quantity: t.number,
 });
 
-export interface IMap {
+export interface IMap extends IIdentifiable {
   name: string;
   art: string;
   nodes: IMapNode[];
@@ -80,6 +81,7 @@ export const mapNodeT: t.Type<IMapNode> = t.type({
 });
 
 export const mapT: t.Type<IMap> = t.type({
+  id: t.string,
   name: t.string,
   art: t.string,
   nodes: t.array(mapNodeT),

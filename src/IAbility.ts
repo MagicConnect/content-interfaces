@@ -2,6 +2,7 @@ import * as t from 'io-ts';
 import { enumT } from './io-ts-enum';
 import { Element, elementEnumT, MonsterType, monsterTypeEnumT, Stat, statEnumT, StatusEffect, statusEffectEnumT } from './BuildingBlocks';
 import { intStringT } from './io-ts-integer-string-brand';
+import { IIdentifiable } from './IIdentifiable';
 
 // enums for abilities
 export enum AbilityTrigger {
@@ -24,6 +25,7 @@ export enum AbilityTrigger {
 
   OnCombatStart = 'OnCombatStart'
 }
+
 export const abilityTriggerEnumT: t.Type<AbilityTrigger> = enumT('AbilityTrigger', AbilityTrigger);
 
 export enum AbilityEffect {
@@ -94,7 +96,9 @@ export enum AbilityEffect {
   ModifyBaseSkill = 'ModifyBaseSkill'
 
 }
+
 export const abilityEffectEnumT: t.Type<AbilityEffect> = enumT('AbilityEffect', AbilityEffect);
+
 
 export enum AbilityTarget {
   Self = 'Self',
@@ -116,6 +120,7 @@ export enum AbilityTarget {
   AllyNotHealer = 'AllyNotHealer',
 
 }
+
 export const abilityTargetEnumT: t.Type<AbilityTarget> = enumT('AbilityTarget', AbilityTarget);
 
 export enum AbilityCondition {
@@ -147,6 +152,7 @@ export enum AbilityCondition {
 
   FirstTurns = 'FirstTurns'
 }
+
 export const abilityConditionEnumT: t.Type<AbilityCondition> = enumT('AbilityCondition', AbilityCondition);
 
 // interfaces for ability props / abilities
@@ -165,7 +171,9 @@ export interface IAbilityEffectProps {
   element?: Element;                    // the element imbued by the ability
   surviveDeathReboundValue?: number;    // the survive HP rebound value
 }
+
 export const abilityEffectPropsT: t.Type<IAbilityEffectProps> = t.partial({
+
   effectTarget: abilityTargetEnumT,
 
   isPercent: t.boolean,
@@ -195,6 +203,7 @@ export interface IAbilityConditionProps {
 
   firstTurns?: number;                  // the number of turns at the start of combat that the ability applies for
 }
+
 export const abilityConditionPropsT: t.Type<IAbilityConditionProps> = t.partial({
   isPercent: t.boolean,
 
@@ -216,6 +225,7 @@ export interface IAbilityEffect {
   props: IAbilityEffectProps;
   target: AbilityTarget;
 }
+
 export const abilityEffectT: t.Type<IAbilityEffect> = t.type({
   value: abilityEffectEnumT,
   props: abilityEffectPropsT,
@@ -226,12 +236,13 @@ export interface IAbilityCondition {
   value: AbilityCondition;
   props: IAbilityConditionProps;
 }
+
 export const abilityConditionT: t.Type<IAbilityCondition> = t.type({
   value: abilityConditionEnumT,
   props: abilityConditionPropsT,
 });
 
-export interface IAbility {
+export interface IAbility extends IIdentifiable {
   name: string;
   description: string;
 
@@ -243,6 +254,7 @@ export interface IAbility {
 }
 export const abilityT: t.Type<IAbility> = t.recursion('Ability', () =>
   t.type({
+    id: t.string,
     name: t.string,
     description: t.string,
 

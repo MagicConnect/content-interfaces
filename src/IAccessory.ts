@@ -8,6 +8,7 @@ export type IAccessory = IItem & {
 
   abilities: string[];                    // accessory base abilities (un-upgraded)
 }
+
 export const accessoryT: t.Type<IAccessory> = t.intersection([
   itemT,
   t.type({

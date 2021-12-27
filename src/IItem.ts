@@ -1,4 +1,5 @@
 import * as t from 'io-ts';
+import { IIdentifiable } from './IIdentifiable';
 import { enumT } from './io-ts-enum';
 
 export enum ItemType {
@@ -81,7 +82,7 @@ export enum ItemType {
 
 export const itemTypeT = enumT('ItemType', ItemType);
 
-export interface IItem {
+export interface IItem extends IIdentifiable {
   name: string;
   art: string;
   description: string;
@@ -93,6 +94,7 @@ export interface IItem {
 
 export const itemT: t.Type<IItem> = t.intersection([
   t.type({
+    id: t.string,
     name: t.string,
     art: t.string,
     description: t.string,

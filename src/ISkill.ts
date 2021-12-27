@@ -1,6 +1,7 @@
 import * as t from 'io-ts';
 import { enumT } from './io-ts-enum';
 import { Element, elementEnumT, Stat, statEnumT, StatusEffect, statusEffectEnumT } from './BuildingBlocks';
+import { IIdentifiable } from './IIdentifiable';
 
 export enum SkillValidTargets {
   All = 'All',                                      // allow targetting for all units on both sides
@@ -67,7 +68,7 @@ export const skillActionT: t.Type<ISkillAction> = t.type({
   dropsTrap: t.boolean,
 });
 
-export interface ISkill {
+export interface ISkill extends IIdentifiable {
   name: string;             // name of the skill
   description: string;      // description of the skill
   hpCost: number;           // HP cost of the skill
@@ -78,6 +79,7 @@ export interface ISkill {
   actions: ISkillAction[];  // attack sequence for the skill
 }
 export const skillT: t.Type<ISkill> = t.type({
+  id: t.string,
   name: t.string,
   description: t.string,
   hpCost: t.number,

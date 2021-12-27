@@ -1,7 +1,8 @@
 import * as t from 'io-ts';
 import { Archetype, archetypeEnumT, PrimaryStat, primaryStatT, Stat, statEnumT } from './BuildingBlocks';
+import { IIdentifiable } from './IIdentifiable';
 
-export interface IEnemy {
+export interface IEnemy extends IIdentifiable {
   name: string;                           // character name
   art: string;
   spritesheet: string;
@@ -16,7 +17,9 @@ export interface IEnemy {
   abilities: string[];                    // character abilities
   skills: string[];                       // character skills
 }
+
 export const enemyT: t.Type<IEnemy> = t.type({
+  id: t.string,
   name: t.string,
   art: t.string,
   spritesheet: t.string,

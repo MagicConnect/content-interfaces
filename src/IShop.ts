@@ -1,4 +1,5 @@
 import * as t from 'io-ts';
+import { IIdentifiable } from './IIdentifiable';
 import { enumT } from './io-ts-enum';
 
 export enum ShopReset {
@@ -22,7 +23,7 @@ export const shopBuyableT: t.Type<IShopBuyable> = t.type({
   quantity: t.number,
 });
 
-export interface IShop {
+export interface IShop extends IIdentifiable {
   name: string;
   description: string;
   currencyItem: string;
@@ -37,6 +38,7 @@ export interface IShop {
 }
 
 export const shopT: t.Type<IShop> = t.type({
+  id: t.string,
   name: t.string,
   description: t.string,
   currencyItem: t.string,

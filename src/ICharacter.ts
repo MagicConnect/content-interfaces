@@ -1,5 +1,6 @@
 import * as t from 'io-ts';
 import { Archetype, archetypeEnumT, PrimaryStat, primaryStatT, Stat, statEnumT, Weapon, weaponEnumT } from './BuildingBlocks';
+import { IIdentifiable } from './IIdentifiable';
 
 export interface ICharacterAbility {
   name: string;                           // the name of the ability group
@@ -10,7 +11,7 @@ export const characterAbilityT: t.Type<ICharacterAbility> = t.type({
   abilities: t.array(t.string),
 });
 
-export interface ICharacter {
+export interface ICharacter extends IIdentifiable {
   name: string;                           // character name
   art: string;                            // character base splash art
   spritesheet: string;                    // character base spritesheet
@@ -33,7 +34,9 @@ export interface ICharacter {
   skills: string[];                       // character skills
   specialSkill: string;                   // character special ability
 }
+
 export const characterT: t.Type<ICharacter> = t.type({
+  id: t.string,
   name: t.string,
   art: t.string,
   spritesheet: t.string,

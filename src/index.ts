@@ -6,6 +6,7 @@ export * from './IContentPack';
 export * from './ICharacter';
 export * from './IAccessory';
 export * from './IEnemy';
+export * from './IIdentifiable';
 export * from './IItem';
 export * from './IMap';
 export * from './IShop';

@@ -1,6 +1,6 @@
-import * as t from 'io-ts';
-import { IIdentifiable } from './IIdentifiable';
-import { intStringT } from './io-ts-integer-string-brand';
+import * as t from "io-ts";
+import { IIdentifiable } from "./IIdentifiable";
+import { intStringT } from "./io-ts-integer-string-brand";
 
 export interface IMapNodeDroppable {
   name: string;
@@ -38,7 +38,7 @@ export interface IMapNode {
 }
 
 export interface IMapCombat {
-  grid: IMapCombatGrid[][];
+  grid: (IMapCombatGrid | null)[][];
 }
 
 export interface IMapCombatGrid {
@@ -63,7 +63,7 @@ export const mapCombatGridT: t.Type<IMapCombatGrid> = t.type({
 });
 
 export const mapCombatT: t.Type<IMapCombat> = t.type({
-  grid: t.array(t.array(mapCombatGridT))
+  grid: t.array(t.array(t.union([mapCombatGridT, t.null]))),
 });
 
 export const mapNodeT: t.Type<IMapNode> = t.type({

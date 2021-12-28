@@ -6,9 +6,20 @@ export interface ICharacterAbility {
   name: string;                           // the name of the ability group
   abilities: string[];                    // the abilities in the group
 }
+
 export const characterAbilityT: t.Type<ICharacterAbility> = t.type({
   name: t.string,
   abilities: t.array(t.string),
+});
+
+export interface ICharacterSkill {
+  name: string;                           // the name of the skill
+  lb: number;                             // the LB the skill is earned at
+}
+
+export const characterSkillT: t.Type<ICharacterSkill> = t.type({
+  name: t.string,
+  lb: t.number,
 });
 
 export interface ICharacter extends IIdentifiable {
@@ -31,7 +42,7 @@ export interface ICharacter extends IIdentifiable {
   lbStats: Record<Stat, number>;          // stats gained per lb
 
   abilities: ICharacterAbility[];         // character abilities
-  skills: string[];                       // character skills
+  skills: ICharacterSkill[];              // character skills
   specialSkill: string;                   // character special ability
 }
 
@@ -60,6 +71,6 @@ export const characterT: t.Type<ICharacter> = t.type({
   lbStats: t.record(statEnumT, t.number),
 
   abilities: t.array(characterAbilityT),
-  skills: t.array(t.string),
+  skills: t.array(characterSkillT),
   specialSkill: t.string,
 });

@@ -1,15 +1,6 @@
 import * as t from 'io-ts';
 import { IIdentifiable } from './IIdentifiable';
 
-export type BannerType = 'characters' | 'accessories' | 'items' | 'weapons';
-
-export const bannerTypeT: t.Type<BannerType> = t.keyof({
-  characters: null,
-  accessories: null,
-  items: null,
-  weapons: null,
-});
-
 export interface IBannerRollable {
   name: string;
   isBannerSpecial: boolean;
@@ -24,7 +15,6 @@ export interface IBanner extends IIdentifiable {
   name: string;
   art: string;
   description: string;
-  type: BannerType;
 
   activeStarts: string;
   activeEnds: string;
@@ -40,7 +30,6 @@ export const bannerT: t.Type<IBanner> = t.type({
   name: t.string,
   art: t.string,
   description: t.string,
-  type: bannerTypeT,
 
   activeStarts: t.string,
   activeEnds: t.string,

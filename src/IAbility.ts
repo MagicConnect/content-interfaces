@@ -250,19 +250,13 @@ export interface IAbilityUtility {
   conditions: IAbilityCondition[];
 }
 
-export interface IAbility extends IIdentifiable, IAbilityUtility {
+export interface IAbility extends IIdentifiable {
   lbChanges: Record<string, IAbilityUtility & { shouldHide: boolean }>;
 }
 
 export const abilityT: t.Type<IAbility> = t.recursion('Ability', () =>
   t.type({
     id: t.string,
-    name: t.string,
-    description: t.string,
-
-    trigger: abilityTriggerEnumT,
-    effects: t.array(abilityEffectT),
-    conditions: t.array(abilityConditionT),
 
     lbChanges: t.record(intStringT, t.type({ 
       name: t.string,

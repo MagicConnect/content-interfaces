@@ -1,6 +1,6 @@
-import * as t from 'io-ts';
-import { IIdentifiable } from './IIdentifiable';
-import { intStringT } from './io-ts-integer-string-brand';
+import * as t from "io-ts";
+import { IIdentifiable } from "./IIdentifiable";
+import { intStringT } from "./io-ts-integer-string-brand";
 
 export interface IMapNodeDroppable {
   name: string;

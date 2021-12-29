@@ -251,12 +251,14 @@ export interface IAbilityUtility {
 }
 
 export interface IAbility extends IIdentifiable, IAbilityUtility {
+  isAbilityUsedAtLB0: boolean;
   lbChanges: Record<string, IAbilityUtility & { shouldHide: boolean }>;
 }
 
 export const abilityT: t.Type<IAbility> = t.recursion('Ability', () =>
   t.type({
     id: t.string,
+    isAbilityUsedAtLB0: t.boolean,
     name: t.string,
     description: t.string,
 

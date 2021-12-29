@@ -38,7 +38,7 @@ export interface IMapNode {
 }
 
 export interface IMapCombat {
-  grid: IMapCombatGrid[][];
+  grid: Record<number, Record<number, IMapCombatGrid>>;
 }
 
 export interface IMapCombatGrid {
@@ -63,7 +63,7 @@ export const mapCombatGridT: t.Type<IMapCombatGrid> = t.type({
 });
 
 export const mapCombatT: t.Type<IMapCombat> = t.type({
-  grid: t.array(t.array(mapCombatGridT))
+  grid: t.record(t.number, t.record(t.number, mapCombatGridT))
 });
 
 export const mapNodeT: t.Type<IMapNode> = t.type({

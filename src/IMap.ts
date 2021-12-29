@@ -63,7 +63,7 @@ export const mapCombatGridT: t.Type<IMapCombatGrid> = t.type({
 });
 
 export const mapCombatT: t.Type<IMapCombat> = t.type({
-  grid: t.record(t.number, t.record(t.number, mapCombatGridT))
+  grid: t.record(t.string, t.record(t.string, mapCombatGridT))
 });
 
 export const mapNodeT: t.Type<IMapNode> = t.type({

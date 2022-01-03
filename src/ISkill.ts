@@ -72,7 +72,6 @@ export interface ISkill extends IIdentifiable {
   name: string;             // name of the skill
   description: string;      // description of the skill
   hpCost: number;           // HP cost of the skill
-  mpCost: number;           // MP cost of the skill
   spcCost: number;          // SPC cost of the skill
   cooldown: number;         // cooldown of the skill in rounds
 
@@ -83,7 +82,6 @@ export const skillT: t.Type<ISkill> = t.type({
   name: t.string,
   description: t.string,
   hpCost: t.number,
-  mpCost: t.number,
   spcCost: t.number,
   cooldown: t.number,
 

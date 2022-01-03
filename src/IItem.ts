@@ -36,7 +36,6 @@ export enum ItemType {
   LBLarge = 'LBLarge',
 
   EssenceHP = 'EssenceHP',
-  EssenceMP = 'EssenceMP',
   EssenceATK = 'EssenceATK',
   EssenceDEF = 'EssenceDEF',
   EssenceMAG = 'EssenceMAG',

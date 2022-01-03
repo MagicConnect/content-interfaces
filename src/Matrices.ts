@@ -18,7 +18,6 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Special]: 0,
   
       [Stat.HP]: 40,
-      [Stat.MP]: 0,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
       [Stat.MagicEvasion]: 0,
@@ -32,7 +31,6 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Special]: 1,
   
       [Stat.HP]: 6,
-      [Stat.MP]: 0,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
       [Stat.MagicEvasion]: 0,
@@ -46,7 +44,6 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Special]: 2,
   
       [Stat.HP]: 20,
-      [Stat.MP]: 10,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
       [Stat.MagicEvasion]: 0,
@@ -62,7 +59,6 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Special]: 2,
   
       [Stat.HP]: 10,
-      [Stat.MP]: 30,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
       [Stat.MagicEvasion]: 0,
@@ -76,7 +72,6 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Special]: 2,
   
       [Stat.HP]: 2,
-      [Stat.MP]: 4,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
       [Stat.MagicEvasion]: 0,
@@ -90,7 +85,6 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Special]: 2,
   
       [Stat.HP]: 10,
-      [Stat.MP]: 30,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
       [Stat.MagicEvasion]: 0,
@@ -106,7 +100,6 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Special]: 1,
   
       [Stat.HP]: 30,
-      [Stat.MP]: 5,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
       [Stat.MagicEvasion]: 0,
@@ -120,7 +113,6 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Special]: 2,
   
       [Stat.HP]: 4,
-      [Stat.MP]: 2,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
       [Stat.MagicEvasion]: 0,
@@ -134,7 +126,6 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Special]: 2,
   
       [Stat.HP]: 30,
-      [Stat.MP]: 10,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
       [Stat.MagicEvasion]: 0,
@@ -150,7 +141,6 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Special]: 2,
   
       [Stat.HP]: 15,
-      [Stat.MP]: 15,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
       [Stat.MagicEvasion]: 0,
@@ -164,7 +154,6 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Special]: 2,
   
       [Stat.HP]: 4,
-      [Stat.MP]: 2,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
       [Stat.MagicEvasion]: 0,
@@ -178,7 +167,6 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Special]: 4,
   
       [Stat.HP]: 20,
-      [Stat.MP]: 20,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
       [Stat.MagicEvasion]: 0,
@@ -194,7 +182,6 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Special]: 1,
   
       [Stat.HP]: 20,
-      [Stat.MP]: 10,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
       [Stat.MagicEvasion]: 0,
@@ -208,7 +195,6 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Special]: 3,
   
       [Stat.HP]: 4,
-      [Stat.MP]: 2,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
       [Stat.MagicEvasion]: 0,
@@ -222,7 +208,6 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Special]: 4,
   
       [Stat.HP]: 20,
-      [Stat.MP]: 10,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
       [Stat.MagicEvasion]: 0,

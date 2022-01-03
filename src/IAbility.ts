@@ -36,9 +36,7 @@ export enum AbilityEffect {
   ConvertStat = 'ConvertStat',
 
   HPRegen = 'HPRegen',
-  MPRegen = 'MPRegen',
   HPLeech = 'HPLeech',
-  MPLeech = 'MPLeech',
 
   SpecialGaugeBoost = 'SpecialGaugeBoost',
   SpecialGaugeRegen = 'SpecialGaugeRegen',
@@ -128,8 +126,6 @@ export enum AbilityCondition {
 
   AboveHP = 'AboveHP',
   BelowHP = 'BelowHP',
-  AboveMP = 'AboveMP',
-  BelowMP = 'BelowMP',
   AboveSPC = 'AboveSPC',
   BelowSPC = 'BelowSPC',
 
@@ -192,7 +188,6 @@ export interface IAbilityConditionProps {
   isPercent?: boolean;                  // whether or not the condition relies on a percent
 
   hpValue?: number;                     // the hp value to check for for the ability condition
-  mpValue?: number;                     // the mp value to check for for the ability condition
   spcValue?: number;                    // the spc value to check for for the ability condition
   enemyCount?: number;                // the number of enemies alive or dead to check for for the ability condition
   alliesCount?: number;                 // the number of allies alive or dead to check for for the ability condition
@@ -253,6 +248,9 @@ export interface IAbilityUtility {
 export interface IAbility extends IIdentifiable, IAbilityUtility {
   isAbilityUsedAtLB0: boolean;
   lbChanges: Record<string, IAbilityUtility & { shouldHide: boolean }>;
+  
+  generatedElements: Record<Element, number>;
+  consumedElements: Record<Element, number>;
 }
 
 export const abilityT: t.Type<IAbility> = t.recursion('Ability', () =>
@@ -261,6 +259,9 @@ export const abilityT: t.Type<IAbility> = t.recursion('Ability', () =>
     isAbilityUsedAtLB0: t.boolean,
     name: t.string,
     description: t.string,
+
+    generatedElements: t.record(elementEnumT, t.number),
+    consumedElements: t.record(elementEnumT, t.number),
 
     trigger: abilityTriggerEnumT,
     effects: t.array(abilityEffectT),

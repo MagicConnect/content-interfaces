@@ -248,9 +248,6 @@ export interface IAbilityUtility {
 export interface IAbility extends IIdentifiable, IAbilityUtility {
   isAbilityUsedAtLB0: boolean;
   lbChanges: Record<string, IAbilityUtility & { shouldHide: boolean }>;
-  
-  generatedElements: Record<Element, number>;
-  consumedElements: Record<Element, number>;
 }
 
 export const abilityT: t.Type<IAbility> = t.recursion('Ability', () =>
@@ -259,9 +256,6 @@ export const abilityT: t.Type<IAbility> = t.recursion('Ability', () =>
     isAbilityUsedAtLB0: t.boolean,
     name: t.string,
     description: t.string,
-
-    generatedElements: t.record(elementEnumT, t.number),
-    consumedElements: t.record(elementEnumT, t.number),
 
     trigger: abilityTriggerEnumT,
     effects: t.array(abilityEffectT),

@@ -38,7 +38,7 @@ export enum Element {
   Neutral = 'Neutral',
   Fire = 'Fire',
   Ice = 'Ice',
-  Lightning = 'Lightning',
+  Thunder = 'Thunder',
   Earth = 'Earth',
   Dark = 'Dark',
   Light = 'Light'

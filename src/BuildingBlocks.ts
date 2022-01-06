@@ -12,6 +12,7 @@ export enum MonsterType {
   Plant = 'Plant',
   Undead = 'Undead'
 }
+
 export const monsterTypeEnumT: t.Type<MonsterType> = enumT('MonsterType', MonsterType);
 
 export enum Archetype {

@@ -1,5 +1,5 @@
 import * as t from "io-ts";
-import { Element } from '.';
+import { Element, elementEnumT } from '.';
 import { IIdentifiable } from "./IIdentifiable";
 import { intStringT } from "./io-ts-integer-string-brand";
 
@@ -66,7 +66,9 @@ export const mapCombatGridT: t.Type<IMapCombatGrid> = t.type({
 });
 
 export const mapCombatT: t.Type<IMapCombat> = t.type({
-  grid: t.record(t.string, t.record(t.string, mapCombatGridT))
+  grid: t.record(t.string, t.record(t.string, mapCombatGridT)),
+  elementSaturation: t.record(elementEnumT, t.number),
+  elementHardCap: t.record(elementEnumT, t.number),
 });
 
 export const mapNodeT: t.Type<IMapNode> = t.type({

@@ -8,6 +8,7 @@ export interface IMapNodeDroppable {
   dropPercent: number;
   quantity: number;
 }
+
 export const mapNodeDroppableT: t.Type<IMapNodeDroppable> = t.type({
   name: t.string,
   dropPercent: t.number,

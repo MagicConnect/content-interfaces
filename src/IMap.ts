@@ -41,7 +41,7 @@ export interface IMapNode {
 export interface IMapCombat {
   grid: Record<number, Record<number, IMapCombatGrid>>;
   usesDefaultSaturation: boolean;
-  usesDefaultCap: boolean;
+  usesDefaultHardCap: boolean;
   elementSaturation: Record<Element, number>;
   elementHardCap: Record<Element, number>;
 }
@@ -70,7 +70,7 @@ export const mapCombatGridT: t.Type<IMapCombatGrid> = t.type({
 export const mapCombatT: t.Type<IMapCombat> = t.type({
   grid: t.record(t.string, t.record(t.string, mapCombatGridT)),
   usesDefaultSaturation: t.boolean,
-  usesDefaultCap: t.boolean,
+  usesDefaultHardCap: t.boolean,
   elementSaturation: t.record(elementEnumT, t.number),
   elementHardCap: t.record(elementEnumT, t.number),
 });

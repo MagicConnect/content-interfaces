@@ -1,4 +1,5 @@
 import * as t from "io-ts";
+import { Element } from '.';
 import { IIdentifiable } from "./IIdentifiable";
 import { intStringT } from "./io-ts-integer-string-brand";
 
@@ -39,6 +40,8 @@ export interface IMapNode {
 
 export interface IMapCombat {
   grid: Record<number, Record<number, IMapCombatGrid>>;
+  elementSaturation: Record<Element, number>;
+  elementHardCap: Record<Element, number>;
 }
 
 export interface IMapCombatGrid {

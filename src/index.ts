@@ -1,6 +1,7 @@
 
 export * from './BuildingBlocks';
 export * from './IAbility';
+export * from './IAchievement';
 export * from './IBanner';
 export * from './IContentPack';
 export * from './ICharacter';

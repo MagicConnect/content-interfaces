@@ -173,7 +173,10 @@ export const achievementRewardT: t.Type<IAchievementReward> = t.type({
 export interface IAchievement extends IIdentifiable {
   id: string;
   name: string;
+  description: string;
   art: string;
+
+  lockedBy?: string;
 
   requirements: {
     stat: AchievementStat;
@@ -190,26 +193,32 @@ export interface IAchievement extends IIdentifiable {
   };
 }
 
-export const achievementT: t.Type<IAchievement> = t.type({
-  id: t.string,
-  name: t.string,
-  art: t.string,
+export const achievementT: t.Type<IAchievement> = t.intersection([
+  t.type({
+    id: t.string,
+    name: t.string,
+    description: t.string,
+    art: t.string,
 
-  requirements: t.intersection([
-    t.type({
-      stat: achievementStatEnumT,
-      statValue: t.number
-    }),
-    t.partial({
-      mapName: t.string,
-      mapNodeName: t.string
+    requirements: t.intersection([
+      t.type({
+        stat: achievementStatEnumT,
+        statValue: t.number
+      }),
+      t.partial({
+        mapName: t.string,
+        mapNodeName: t.string
+      })
+    ]),
+
+    rewards: t.type({
+      accessories: t.array(achievementRewardT),
+      items: t.array(achievementRewardT),
+      characters: t.array(achievementRewardT),
+      weapons: t.array(achievementRewardT)
     })
-  ]),
-
-  rewards: t.type({
-    accessories: t.array(achievementRewardT),
-    items: t.array(achievementRewardT),
-    characters: t.array(achievementRewardT),
-    weapons: t.array(achievementRewardT)
+  }),
+  t.partial({
+    lockedBy: t.string
   })
-});
+]);

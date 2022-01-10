@@ -1,5 +1,6 @@
 
 import * as t from 'io-ts';
+import { IIdentifiable } from '.';
 import { enumT } from './io-ts-enum';
 
 export enum AchievementStat {
@@ -169,7 +170,8 @@ export const achievementRewardT: t.Type<IAchievementReward> = t.type({
   quantity: t.number
 });
 
-export interface IAchievement {
+export interface IAchievement extends IIdentifiable {
+  id: string;
   name: string;
   art: string;
 
@@ -188,6 +190,7 @@ export interface IAchievement {
 }
 
 export const achievementT: t.Type<IAchievement> = t.type({
+  id: t.string,
   name: t.string,
   art: t.string,
 

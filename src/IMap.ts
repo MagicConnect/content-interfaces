@@ -8,7 +8,6 @@ export interface IMapNodeDroppable {
   dropPercent: number;
   quantity: number;
 }
-
 export const mapNodeDroppableT: t.Type<IMapNodeDroppable> = t.type({
   name: t.string,
   dropPercent: t.number,
@@ -25,8 +24,8 @@ export interface IMap extends IIdentifiable {
   activeEnds: string;
 }
 
-export interface IMapNode extends IIdentifiable {
-  id: string;
+export interface IMapNode {
+  id: number;
   name: string;
   x: number;
   y: number;
@@ -41,8 +40,6 @@ export interface IMapNode extends IIdentifiable {
 
 export interface IMapCombat {
   grid: Record<number, Record<number, IMapCombatGrid>>;
-  usesDefaultSaturation: boolean;
-  usesDefaultHardCap: boolean;
   elementSaturation: Record<Element, number>;
   elementHardCap: Record<Element, number>;
 }
@@ -70,14 +67,12 @@ export const mapCombatGridT: t.Type<IMapCombatGrid> = t.type({
 
 export const mapCombatT: t.Type<IMapCombat> = t.type({
   grid: t.record(t.string, t.record(t.string, mapCombatGridT)),
-  usesDefaultSaturation: t.boolean,
-  usesDefaultHardCap: t.boolean,
   elementSaturation: t.record(elementEnumT, t.number),
   elementHardCap: t.record(elementEnumT, t.number),
 });
 
 export const mapNodeT: t.Type<IMapNode> = t.type({
-  id: t.string,
+  id: t.number,
   name: t.string,
   x: t.number,
   y: t.number,

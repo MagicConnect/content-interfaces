@@ -9,10 +9,13 @@ import { enemyT, IEnemy } from './IEnemy';
 import { IMap, mapT } from './IMap';
 import { abilityT, IAbility } from './IAbility';
 import { ISkill, skillT } from './ISkill';
+import { IAchievement } from './IAchievement';
+import { achievementT } from '.';
 
 export interface IContentPack {
   abilities: IAbility[];
   accessories: IAccessory[];
+  achievements: IAchievement[];
   banners: IBanner[];
   characters: ICharacter[];
   enemies: IEnemy[];
@@ -25,6 +28,7 @@ export interface IContentPack {
 export const contentPackT: t.Type<IContentPack> = t.type({
   abilities: t.array(abilityT),
   accessories: t.array(accessoryT),
+  achievements: t.array(achievementT),
   banners: t.array(bannerT),
   characters: t.array(characterT),
   enemies: t.array(enemyT),
@@ -42,6 +46,7 @@ export interface IArtPack {
   };
 
   accessories: string[];
+  achievements: string[];
   banners: string[];
   characters: string[];
   charactersheets: string[];
@@ -58,6 +63,7 @@ export const artPackT: t.Type<IArtPack> = t.type({
   }),
 
   accessories: t.array(t.string),
+  achievements: t.array(t.string),
   banners: t.array(t.string),
   characters: t.array(t.string),
   charactersheets: t.array(t.string),

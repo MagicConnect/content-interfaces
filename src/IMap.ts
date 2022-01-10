@@ -77,7 +77,7 @@ export const mapCombatT: t.Type<IMapCombat> = t.type({
 });
 
 export const mapNodeT: t.Type<IMapNode> = t.type({
-  id: t.number,
+  id: t.string,
   name: t.string,
   x: t.number,
   y: t.number,

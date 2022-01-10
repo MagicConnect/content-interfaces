@@ -183,6 +183,7 @@ export interface IAchievement extends IIdentifiable {
   };
 
   rewards: {
+    accessories: IAchievementReward[];
     items: IAchievementReward[];
     characters: IAchievementReward[];
     weapons: IAchievementReward[];
@@ -206,6 +207,7 @@ export const achievementT: t.Type<IAchievement> = t.type({
   ]),
 
   rewards: t.type({
+    accessories: t.array(achievementRewardT),
     items: t.array(achievementRewardT),
     characters: t.array(achievementRewardT),
     weapons: t.array(achievementRewardT)

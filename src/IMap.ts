@@ -28,6 +28,7 @@ export interface IMap extends IIdentifiable {
 export interface IMapNode {
   id: number;
   name: string;
+  isDefaultAvailable: boolean;
   x: number;
   y: number;
   description: string;

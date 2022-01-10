@@ -182,7 +182,7 @@ export interface IAchievement extends IIdentifiable {
     stat: AchievementStat;
     statValue: number;
     mapName?: string;
-    mapNodeName?: string;
+    mapNodeId?: number;
   };
 
   rewards: {
@@ -207,7 +207,7 @@ export const achievementT: t.Type<IAchievement> = t.intersection([
       }),
       t.partial({
         mapName: t.string,
-        mapNodeName: t.string
+        mapNodeId: t.number
       })
     ]),
 

@@ -80,6 +80,7 @@ export const mapCombatT: t.Type<IMapCombat> = t.type({
 export const mapNodeT: t.Type<IMapNode> = t.type({
   id: t.number,
   name: t.string,
+  isDefaultAvailable: t.boolean,
   x: t.number,
   y: t.number,
   description: t.string,

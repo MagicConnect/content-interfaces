@@ -25,8 +25,8 @@ export interface IMap extends IIdentifiable {
   activeEnds: string;
 }
 
-export interface IMapNode {
-  id: number;
+export interface IMapNode extends IIdentifiable {
+  id: string;
   name: string;
   x: number;
   y: number;

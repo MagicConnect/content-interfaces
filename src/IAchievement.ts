@@ -1,6 +1,6 @@
 
 import * as t from 'io-ts';
-import { IIdentifiable } from '.';
+import { IIdentifiable } from './IIdentifiable';
 import { enumT } from './io-ts-enum';
 
 export enum AchievementStat {

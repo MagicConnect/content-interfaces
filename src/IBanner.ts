@@ -15,6 +15,7 @@ export interface IBanner extends IIdentifiable {
   name: string;
   art: string;
   description: string;
+  rollItem: string;
 
   activeStarts: string;
   activeEnds: string;
@@ -30,6 +31,7 @@ export const bannerT: t.Type<IBanner> = t.type({
   name: t.string,
   art: t.string,
   description: t.string,
+  rollItem: t.string,
 
   activeStarts: t.string,
   activeEnds: t.string,

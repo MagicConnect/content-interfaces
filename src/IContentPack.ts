@@ -9,8 +9,7 @@ import { enemyT, IEnemy } from './IEnemy';
 import { IMap, mapT } from './IMap';
 import { abilityT, IAbility } from './IAbility';
 import { ISkill, skillT } from './ISkill';
-import { IAchievement } from './IAchievement';
-import { achievementT } from '.';
+import { IAchievement, achievementT } from './IAchievement';
 
 export interface IContentPack {
   abilities: IAbility[];

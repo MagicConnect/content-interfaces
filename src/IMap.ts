@@ -1,5 +1,5 @@
 import * as t from "io-ts";
-import { Element, elementEnumT } from '.';
+import { Element, elementEnumT } from './BuildingBlocks';
 import { IIdentifiable } from "./IIdentifiable";
 import { intStringT } from "./io-ts-integer-string-brand";
 
@@ -7,12 +7,14 @@ export interface IMapNodeDroppable {
   name: string;
   dropPercent: number;
   quantity: number;
+  onlyOneTime: boolean;
 }
 
 export const mapNodeDroppableT: t.Type<IMapNodeDroppable> = t.type({
   name: t.string,
   dropPercent: t.number,
   quantity: t.number,
+  onlyOneTime: t.boolean
 });
 
 export interface IMap extends IIdentifiable {

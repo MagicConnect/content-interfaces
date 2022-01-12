@@ -3,6 +3,19 @@ import * as t from 'io-ts';
 import { IIdentifiable } from './IIdentifiable';
 import { enumT } from './io-ts-enum';
 
+export enum AchievementCategory {
+  MainStory = 'MainStory',
+  SideStory = 'SideStory',
+  EventStory = 'EventStory',
+  DeepDungeon = 'DeepDungeon',
+  Combat = 'Combat',
+  PvP = 'PvP',
+  Collections = 'Collections',
+  Miscellaneous = 'Miscellaneous',
+}
+
+export const achievementCategoryEnumT: t.Type<AchievementCategory> = enumT('AchievementCategory', AchievementCategory);
+
 export enum AchievementStat {
 
   // 5x stats
@@ -140,7 +153,39 @@ export enum AchievementStat {
   ElementsConsumedLight = 'ElementsConsumedLight',
   ElementsConsumedDark = 'ElementsConsumedDark',
 
+  // coop stats
+  CoopPlays = 'CoopPlays',
+  CoopPlayersPlayedWith = 'CoopPlayersPlayedWith',
+  CoopClears = 'CoopClears',
+  CoopLosses = 'CoopLosses',
+  CoopFriendsPlayedWith = 'CoopFriendsPlayedWith',
+
+  CoopPlaysFire = 'CoopPlaysFire',
+  CoopPlaysIce = 'CoopPlaysIce',
+  CoopPlaysWater = 'CoopPlaysWater',
+  CoopPlaysThunder = 'CoopPlaysThunder',
+  CoopPlaysLight = 'CoopPlaysLight',
+  CoopPlaysDark = 'CoopPlaysDark',
+
+  CoopRevives = 'CoopRevives',
+  CoopSurvivedLethalHits = 'CoopSurvivedLethalHits',
+  CoopHealingReceived = 'CoopHealsReceived',
+  CoopHealingGiven = 'CoopHealsGiven',
+  CoopDamageReceived = 'CoopDamageReceived',
+  CoopDamageGiven = 'CoopDamageGiven',
+
+  // deep dungeon stats
+  DeepDungeonClears = 'DeepDungeonClears',
+  DeepDungeonTimesGottenAllAbilities = 'DeepDungeonTimesGottenAllAbilities',
+  DeepDungeonTimesKilledAllEnemies = 'DeepDungeonTimesKilledAllEnemies',
+  DeepDungeonHighestScore = 'DeepDungeonHighestScore',
+  DeepDungeonTotalScore = 'DeepDungeonTotalScore',
+  DeepDungeonCurrencyCollected = 'DeepDungeonCurrencyCollected',
+  DeepDungeonUniqueUnitClears = 'DeepDungeonUniqueUnitClears',
+
   // other stats
+  SurvivedLethalHits = 'SurvivedLethalHits',
+
   SpecificMapClears = 'SpecificMapClears',
   SpecificMapClearsBattle = 'SpecificMapClearsBattle',
   SpecificMapFails = 'SpecificMapFails',
@@ -156,6 +201,10 @@ export enum AchievementStat {
   UnitsGT70 = 'UnitsGT70',
 
   WeaponCollected = 'WeaponCollected',
+
+  Logins = 'Logins',
+  LoginsThisWeek = 'LoginsThisWeek',
+  LoginsThisMonth = 'LoginsThisMonth',
 }
 
 export const achievementStatEnumT: t.Type<AchievementStat> = enumT('AchievementStat', AchievementStat);
@@ -176,7 +225,9 @@ export interface IAchievement extends IIdentifiable {
   description: string;
   art: string;
 
+  category: AchievementCategory;
   lockedBy?: string;
+  isRepeatable: boolean;
 
   requirements: {
     stat: AchievementStat;
@@ -199,6 +250,8 @@ export const achievementT: t.Type<IAchievement> = t.intersection([
     name: t.string,
     description: t.string,
     art: t.string,
+    category: achievementCategoryEnumT,
+    isRepeatable: t.boolean,
 
     requirements: t.intersection([
       t.type({

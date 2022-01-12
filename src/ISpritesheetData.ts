@@ -10,7 +10,7 @@ export interface IUnitSpritesheetData {
   deadFrames: number;
 }
 
-export const spritesheetDataT: t.Type<IUnitSpritesheetData> = t.type({
+export const unitSpritesheetDataT: t.Type<IUnitSpritesheetData> = t.type({
   idleFrames: t.number,
   moveFrames: t.number,
   castFrames: t.number,

@@ -1,5 +1,5 @@
 import * as t from 'io-ts';
-import { IUnitSpritesheetData } from './ISpritesheetData';
+import { IUnitSpritesheetData, unitSpritesheetDataT } from './ISpritesheetData';
 import { Archetype, archetypeEnumT, PrimaryStat, primaryStatT, Stat, statEnumT, Weapon, weaponEnumT } from './BuildingBlocks';
 import { IIdentifiable } from './IIdentifiable';
 
@@ -53,6 +53,7 @@ export const characterT: t.Type<ICharacter> = t.type({
   name: t.string,
   art: t.string,
   spritesheet: t.string,
+  spritesheetData: unitSpritesheetDataT,
 
   archetype: archetypeEnumT,
   weapon: weaponEnumT,

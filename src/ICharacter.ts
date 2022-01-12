@@ -1,4 +1,5 @@
 import * as t from 'io-ts';
+import { IUnitSpritesheetData } from './ISpritesheetData';
 import { Archetype, archetypeEnumT, PrimaryStat, primaryStatT, Stat, statEnumT, Weapon, weaponEnumT } from './BuildingBlocks';
 import { IIdentifiable } from './IIdentifiable';
 
@@ -26,6 +27,7 @@ export interface ICharacter extends IIdentifiable {
   name: string;                           // character name
   art: string;                            // character base splash art
   spritesheet: string;                    // character base spritesheet
+  spritesheetData: IUnitSpritesheetData;  // character spritesheet frame data
 
   archetype: Archetype;                   // character class/archetype
   weapon: Weapon;                         // weapon used by the character

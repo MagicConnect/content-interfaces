@@ -1,4 +1,5 @@
 import * as t from 'io-ts';
+import { IUnitSpritesheetData } from './ISpritesheetData';
 import { Archetype, archetypeEnumT, PrimaryStat, primaryStatT, Stat, statEnumT } from './BuildingBlocks';
 import { IIdentifiable } from './IIdentifiable';
 
@@ -6,6 +7,7 @@ export interface IEnemy extends IIdentifiable {
   name: string;                           // character name
   art: string;
   spritesheet: string;
+  spritesheetData: IUnitSpritesheetData;
 
   primaryStat: PrimaryStat;               // primary character stat, used for basic attack scaling
   basePoints: Record<Archetype, number>;  // base stat points bought per class

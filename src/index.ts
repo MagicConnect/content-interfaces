@@ -12,5 +12,6 @@ export * from './IItem';
 export * from './IMap';
 export * from './IShop';
 export * from './ISkill';
+export * from './ISpritesheetData';
 export * from './IWeapon';
 export * from './Matrices';

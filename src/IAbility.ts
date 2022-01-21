@@ -81,6 +81,11 @@ export enum AbilityEffect {
   // SkillExplodes = 'SkillExplodes',
 
   // misc
+  GenerateElementOnBasicAttack = 'GenerateElementOnBasicAttack',
+  GenerateElementOnPhysicalAttack = 'GenerateElementOnPhysicalAttack',
+  GenerateElementOnMagicalAttack = 'GenerateElementOnMagicalAttack',
+  GenerateElementOnAllAttack = 'GenerateElementOnAllAttack',
+  
   PhysicalAttackElement = 'PhysicalAttackElement',
   MagicalAttackElement = 'MagicalAttackElement',
 

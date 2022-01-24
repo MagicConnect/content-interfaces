@@ -2,6 +2,7 @@ import * as t from 'io-ts';
 import { IUnitSpritesheetData, unitSpritesheetDataT } from './ISpritesheetData';
 import { Archetype, archetypeEnumT, PrimaryStat, primaryStatT, Stat, statEnumT, Weapon, weaponEnumT } from './BuildingBlocks';
 import { IIdentifiable } from './IIdentifiable';
+import { string } from 'fp-ts';
 
 export interface ICharacterAbility {
   name: string;                           // the name of the ability group
@@ -28,6 +29,7 @@ export interface ICharacter extends IIdentifiable {
   art: string;                            // character base splash art
   spritesheet: string;                    // character base spritesheet
   spritesheetData: IUnitSpritesheetData;  // character spritesheet frame data
+  reinforceItem: string;                  // item used to reinforce character
 
   archetype: Archetype;                   // character class/archetype
   weapon: Weapon;                         // weapon used by the character
@@ -54,6 +56,7 @@ export const characterT: t.Type<ICharacter> = t.type({
   art: t.string,
   spritesheet: t.string,
   spritesheetData: unitSpritesheetDataT,
+  reinforceItem: t.string,
 
   archetype: archetypeEnumT,
   weapon: weaponEnumT,

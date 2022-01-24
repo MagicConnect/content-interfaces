@@ -68,6 +68,8 @@ export enum ItemType {
   ReinforceRainbowMedium = 'ReinforceRainbowMedium',
   ReinforceRainbowLarge = 'ReinforceRainbowLarge',
 
+  ReinforceSpecificItem = 'ReinforceSpecificItem',
+
   XPWeaponSmall = 'XPWeaponSmall',
   XPWeaponMedium = 'XPWeaponMedium',
   XPWeaponLarge = 'XPWeaponLarge',

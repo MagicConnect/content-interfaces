@@ -2,7 +2,17 @@ import * as t from 'io-ts';
 import { IUnitSpritesheetData, unitSpritesheetDataT } from './ISpritesheetData';
 import { Archetype, archetypeEnumT, PrimaryStat, primaryStatT, Stat, statEnumT, Weapon, weaponEnumT } from './BuildingBlocks';
 import { IIdentifiable } from './IIdentifiable';
-import { string } from 'fp-ts';
+import { enumT } from './io-ts-enum';
+
+export enum CharacterSpeed {
+  VerySlow = 9,
+  Slow = 7,
+  Normal = 5,
+  Fast = 3,
+  VeryFast = 1
+}
+
+export const characterSpeedEnumT: t.Type<CharacterSpeed> = enumT('CharacterSpeed', CharacterSpeed);
 
 export interface ICharacterAbility {
   name: string;                           // the name of the ability group
@@ -30,6 +40,7 @@ export interface ICharacter extends IIdentifiable {
   spritesheet: string;                    // character base spritesheet
   spritesheetData: IUnitSpritesheetData;  // character spritesheet frame data
   reinforceItem: string;                  // item used to reinforce character
+  speed: CharacterSpeed;                  // character speed
 
   archetype: Archetype;                   // character class/archetype
   weapon: Weapon;                         // weapon used by the character
@@ -57,6 +68,7 @@ export const characterT: t.Type<ICharacter> = t.type({
   spritesheet: t.string,
   spritesheetData: unitSpritesheetDataT,
   reinforceItem: t.string,
+  speed: characterSpeedEnumT,
 
   archetype: archetypeEnumT,
   weapon: weaponEnumT,

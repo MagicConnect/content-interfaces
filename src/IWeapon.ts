@@ -21,6 +21,7 @@ export const weaponT: t.Type<IWeapon> = t.intersection([
       t.literal(3),
       t.literal(4),
       t.literal(5),
+      t.literal(6),
     ]),
     primaryStat: primaryStatT,
     abilities: t.array(t.string),

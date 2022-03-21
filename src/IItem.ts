@@ -70,6 +70,10 @@ export enum ItemType {
 
   ReinforceSpecificItem = 'ReinforceSpecificItem',
 
+  StaminaTicketSmall = 'StaminaTicketSmall',
+  StaminaTicketMedium = 'StaminaTicketMedium',
+  StaminaTicketLarge = 'StaminaTicketLarge',
+
   XPWeaponSmall = 'XPWeaponSmall',
   XPWeaponMedium = 'XPWeaponMedium',
   XPWeaponLarge = 'XPWeaponLarge',

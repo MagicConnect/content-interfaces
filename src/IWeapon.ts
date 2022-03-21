@@ -4,7 +4,7 @@ import { IItem, itemT } from './IItem';
 
 export type IWeapon = IItem & {
   weaponType: Weapon;                     // the type of weapon
-  stars: 1|2|3|4|5|6                      // weapon rarity
+  stars: 1|2|3|4|5|6;                     // weapon rarity
   primaryStat: PrimaryStat;               // weapon main stat
   secondaryStat?: PrimaryStat;            // weapon secondary stat
 

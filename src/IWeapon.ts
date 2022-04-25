@@ -4,9 +4,10 @@ import { IItem, itemT } from './IItem';
 
 export type IWeapon = IItem & {
   weaponType: Weapon;                     // the type of weapon
-  stars: 1|2|3|4|5|6;                     // weapon rarity
+  stars: 1|2|3|4|5;                       // weapon rarity
   primaryStat: PrimaryStat;               // weapon main stat
   secondaryStat?: PrimaryStat;            // weapon secondary stat
+  hasHigherPotential?: boolean;           // whether the weapon has a higher potential than other items of its type (f.ex. banner weapons have a higher stat potential)
 
   abilities: string[];                    // weapon base abilities (un-upgraded)
 }
@@ -21,12 +22,12 @@ export const weaponT: t.Type<IWeapon> = t.intersection([
       t.literal(3),
       t.literal(4),
       t.literal(5),
-      t.literal(6),
     ]),
     primaryStat: primaryStatT,
     abilities: t.array(t.string),
   }),
   t.partial({
-    secondaryStat: primaryStatT
+    secondaryStat: primaryStatT,
+    hasHigherPotential: t.boolean
   })
 ]);

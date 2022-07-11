@@ -10,6 +10,7 @@ import { IMap, mapT } from './IMap';
 import { abilityT, IAbility } from './IAbility';
 import { ISkill, skillT } from './ISkill';
 import { IAchievement, achievementT } from './IAchievement';
+import { IStore, storeT } from './IStore';
 
 export interface IContentPack {
   abilities: IAbility[];
@@ -21,6 +22,7 @@ export interface IContentPack {
   items: IItem[];
   maps: IMap[];
   shops: IShop[];
+  stores: IStore[];
   skills: ISkill[];
   weapons: IWeapon[];
 }
@@ -34,6 +36,7 @@ export const contentPackT: t.Type<IContentPack> = t.type({
   items: t.array(itemT),
   maps: t.array(mapT),
   shops: t.array(shopT),
+  stores: t.array(storeT),
   skills: t.array(skillT),
   weapons: t.array(weaponT),
 });

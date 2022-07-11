@@ -16,15 +16,21 @@ export const itemBundleT: t.Type<IItemBundle> = t.type({
 })
 
 export interface IStore extends IIdentifiable {
+  id: string;
   name: string;
-  Items: IItemBundle[];
+  items: IItemBundle[];
   cost: number;
 }
 
-export declare const storeT: t.Type<IStore>;
+export const storeT: t.Type<IStore> = t.type({
+  id: t.string,
+  name: t.string,
+  items: t.array(itemBundleT),
+  cost: t.number,
+});
 
-export interface IBundle {
-  bundle: Record<string, IStore>;
-}
+// export interface IBundle {
+//   bundle: Record<string, IStore>;
+// }
 
-export declare const bundleT: t.Type<IBundle>;
+// export declare const bundleT: t.Type<IBundle>;

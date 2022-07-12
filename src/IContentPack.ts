@@ -50,6 +50,7 @@ export interface IArtPack {
   accessories: string[];
   achievements: string[];
   banners: string[];
+  characterheads: string[];
   characters: string[];
   charactersheets: string[];
   enemies: string[];
@@ -67,6 +68,7 @@ export const artPackT: t.Type<IArtPack> = t.type({
   accessories: t.array(t.string),
   achievements: t.array(t.string),
   banners: t.array(t.string),
+  characterheads: t.array(t.string),
   characters: t.array(t.string),
   charactersheets: t.array(t.string),
   enemies: t.array(t.string),

@@ -57,6 +57,8 @@ export interface IArtPack {
   enemysheets: string[];
   items: string[];
   maps: string[];
+  npcs: string[];
+  skillicons: string[];
   weapons: string[];
 }
 export const artPackT: t.Type<IArtPack> = t.type({
@@ -75,5 +77,7 @@ export const artPackT: t.Type<IArtPack> = t.type({
   enemysheets: t.array(t.string),
   items: t.array(t.string),
   maps: t.array(t.string),
+  npcs: t.array(t.string),
+  skillicons: t.array(t.string),
   weapons: t.array(t.string),
 });

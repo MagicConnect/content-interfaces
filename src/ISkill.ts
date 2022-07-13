@@ -70,6 +70,7 @@ export const skillActionT: t.Type<ISkillAction> = t.type({
 
 export interface ISkill extends IIdentifiable {
   name: string;                                 // name of the skill
+  art: string;                                  // art for the skill
   description: string;                          // description of the skill
   hpCost: number;                               // HP cost of the skill
   spcCost: number;                              // SPC cost of the skill
@@ -83,6 +84,7 @@ export interface ISkill extends IIdentifiable {
 export const skillT: t.Type<ISkill> = t.type({
   id: t.string,
   name: t.string,
+  art: t.string,
   description: t.string,
   hpCost: t.number,
   spcCost: t.number,

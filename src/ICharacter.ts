@@ -38,6 +38,7 @@ export const characterSkillT: t.Type<ICharacterSkill> = t.type({
 export interface ICharacter extends IIdentifiable {
   name: string;                           // character name
   art: string;                            // character base splash art
+  headArt: string;                        // character head art
   title: string;                          // character title
   spritesheet: string;                    // character base spritesheet
   spritesheetData: IUnitSpritesheetData;  // character spritesheet frame data
@@ -68,6 +69,7 @@ export const characterT: t.Type<ICharacter> = t.type({
   name: t.string,
   title: t.string,
   art: t.string,
+  headArt: t.string,
   spritesheet: t.string,
   spritesheetData: unitSpritesheetDataT,
   reinforceItem: t.string,

@@ -10,6 +10,7 @@ import { IMap, mapT } from './IMap';
 import { abilityT, IAbility } from './IAbility';
 import { ISkill, skillT } from './ISkill';
 import { IAchievement, achievementT } from './IAchievement';
+import { IStore, storeT } from './IStore';
 
 export interface IContentPack {
   abilities: IAbility[];
@@ -21,6 +22,7 @@ export interface IContentPack {
   items: IItem[];
   maps: IMap[];
   shops: IShop[];
+  stores: IStore[];
   skills: ISkill[];
   weapons: IWeapon[];
 }
@@ -34,6 +36,7 @@ export const contentPackT: t.Type<IContentPack> = t.type({
   items: t.array(itemT),
   maps: t.array(mapT),
   shops: t.array(shopT),
+  stores: t.array(storeT),
   skills: t.array(skillT),
   weapons: t.array(weaponT),
 });
@@ -47,12 +50,15 @@ export interface IArtPack {
   accessories: string[];
   achievements: string[];
   banners: string[];
+  characterheads: string[];
   characters: string[];
   charactersheets: string[];
   enemies: string[];
   enemysheets: string[];
   items: string[];
   maps: string[];
+  npcs: string[];
+  skillicons: string[];
   weapons: string[];
 }
 export const artPackT: t.Type<IArtPack> = t.type({
@@ -64,11 +70,14 @@ export const artPackT: t.Type<IArtPack> = t.type({
   accessories: t.array(t.string),
   achievements: t.array(t.string),
   banners: t.array(t.string),
+  characterheads: t.array(t.string),
   characters: t.array(t.string),
   charactersheets: t.array(t.string),
   enemies: t.array(t.string),
   enemysheets: t.array(t.string),
   items: t.array(t.string),
   maps: t.array(t.string),
+  npcs: t.array(t.string),
+  skillicons: t.array(t.string),
   weapons: t.array(t.string),
 });

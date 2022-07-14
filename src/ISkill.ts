@@ -55,6 +55,7 @@ export interface ISkillAction {
   statScaling: Record<Stat, number>;                  // stat scaling of the attack, eg { ATK: 200 } for 200% ATK
   hits: number;                                       // the number of hits the attack will do
   dropsTrap: boolean;                                 // whether the attack drops a trap that does this attack later, as opposed to casting it right away
+  canTargetDead: boolean;                             // whether the attack can target a dead creature or not (used for revives)
 }
 export const skillActionT: t.Type<ISkillAction> = t.type({
   pattern: skillActionPatternT,
@@ -67,6 +68,7 @@ export const skillActionT: t.Type<ISkillAction> = t.type({
   statScaling: t.record(statEnumT, t.number),
   hits: t.number,
   dropsTrap: t.boolean,
+  canTargetDead: t.boolean
 });
 
 export interface ISkill extends IIdentifiable {

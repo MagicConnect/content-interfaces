@@ -7,6 +7,7 @@ export enum SkillValidTargets {
   All = 'All',                                      // allow targetting for all units on both sides
   Enemies = 'Enemies',                              // allow targetting only for enemies
   Allies = 'Allies',                                // allow targetting only for allies
+  Self = 'Self'                                     // allow for targetting self only
 }
 export const skillValidTargetsT = enumT('SkillValidTargets', SkillValidTargets);
 

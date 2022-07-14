@@ -16,7 +16,6 @@ export const storeItemBundleT: t.Type<IStoreItemBundle> = t.type({
 })
 
 export interface IStore extends IIdentifiable {
-  id: string;
   name: string;
   items: IStoreItemBundle[];
   cost: number;

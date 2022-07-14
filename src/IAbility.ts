@@ -261,6 +261,7 @@ export const abilityT: t.Type<IAbility> = t.recursion('Ability', () =>
     id: t.string,
     isAbilityUsedAtLB0: t.boolean,
     name: t.string,
+    art: t.string,
     description: t.string,
 
     trigger: abilityTriggerEnumT,

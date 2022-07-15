@@ -111,8 +111,8 @@ export enum AbilityTarget {
   AllAllies = 'AllAllies',
   AllAlliesAndSelf = 'AllAlliesAndSelf',
 
-  AllyIsArcher = 'AllyIsArcher',
-  AllyIsNotArcher = 'AllyIsNotArcher',
+  AllyIsRanger = 'AllyIsRanger',
+  AllyIsNotRanger = 'AllyIsNotRanger',
   AllyIsAttacker = 'AllyIsAttacker',
   AllyNotAttacker = 'AllyNotAttacker',
   AllyIsCaster = 'AllyIsCaster',
@@ -145,7 +145,7 @@ export enum AbilityCondition {
   FrontlineCharacters = 'FrontlineCharacters',          // the "first characters" seen by the enemies, ie, frontliners
   NotFrontlineCharacters = 'NotFrontlineCharacters',    // the back row characters, "defended" by the rest
 
-  ArchersInParty = 'ArchersInParty',
+  RangersInParty = 'RangersInParty',
   AttackersInParty = 'AttackersInParty',
   CastersInParty = 'CastersInParty',
   DefendersInParty = 'DefendersInParty',

@@ -5,8 +5,8 @@ import { enumT } from './io-ts-enum';
 
 export enum CalendarBonusRepeat {
   Repeatable = 'Repeatable',
-  NotRepeatable = 'Not Repeatable',
-  ConditionallyRepeatable = 'Conditionally Repeatable',
+  NotRepeatable = 'NotRepeatable',
+  ConditionallyRepeatable = 'ConditionallyRepeatable',
 }
 
 export const calendarBonusItemTypeT = enumT('ItemType', ItemType);

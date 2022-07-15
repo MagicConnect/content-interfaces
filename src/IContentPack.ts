@@ -11,12 +11,14 @@ import { abilityT, IAbility } from './IAbility';
 import { ISkill, skillT } from './ISkill';
 import { IAchievement, achievementT } from './IAchievement';
 import { IStore, storeT } from './IStore';
+import { calendarBonusT, ICalendarBonus } from './ICalendarBonus';
 
 export interface IContentPack {
   abilities: IAbility[];
   accessories: IAccessory[];
   achievements: IAchievement[];
   banners: IBanner[];
+  calendarBonuses: ICalendarBonus[];
   characters: ICharacter[];
   enemies: IEnemy[];
   items: IItem[];
@@ -31,6 +33,7 @@ export const contentPackT: t.Type<IContentPack> = t.type({
   accessories: t.array(accessoryT),
   achievements: t.array(achievementT),
   banners: t.array(bannerT),
+  calendarBonuses: t.array(calendarBonusT),
   characters: t.array(characterT),
   enemies: t.array(enemyT),
   items: t.array(itemT),

@@ -1,6 +1,5 @@
 import * as t from 'io-ts';
 import { IIdentifiable } from "./IIdentifiable";
-import { ItemType } from './IItem';
 import { enumT } from './io-ts-enum';
 
 export enum CalendarBonusRepeat {
@@ -9,19 +8,17 @@ export enum CalendarBonusRepeat {
   ConditionallyRepeatable = 'ConditionallyRepeatable',
 }
 
-export const calendarBonusItemTypeT = enumT('ItemType', ItemType);
-
 export const calendarBonusRepeatT = enumT('CalendarBonusRepeat', CalendarBonusRepeat);
 
 export interface ICalendarBonusItem {
   day: number;
-  itemType: ItemType;
+  itemId: string;
   quantity: number;
 }
 
 export const calendarBonusItemT: t.Type<ICalendarBonusItem> = t.type({
   day: t.number,
-  itemType: calendarBonusItemTypeT,
+  itemId: t.string,
   quantity: t.number,
 })
 

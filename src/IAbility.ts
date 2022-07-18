@@ -6,24 +6,24 @@ import { IIdentifiable } from './IIdentifiable';
 
 // enums for abilities
 export enum AbilityTrigger {
-  Always = 'Always',
+  Always = 'Always',                  // always active
 
-  OnSelfDeath = 'OnSelfDeath',
-  OnAllyDeath = 'OnAllyDeath',
-  OnEnemyDeath = 'OnEnemyDeath',
+  OnSelfDeath = 'OnSelfDeath',        // when this character dies
+  OnAllyDeath = 'OnAllyDeath',        // when an ally (not this character) dies
+  OnEnemyDeath = 'OnEnemyDeath',      // when an enemy dies
 
-  OnSelfHit = 'OnSelfHit',
-  OnAllyHit = 'OnAllyHit',
-  OnEnemyHit = 'OnEnemyHit',
+  OnSelfHit = 'OnSelfHit',            // when this character hits an enemy
+  OnAllyHit = 'OnAllyHit',            // when an ally (not this character) hits an enemy
+  OnEnemyHit = 'OnEnemyHit',          // when an enemy hits anyone
 
-  OnSelfHeal = 'OnSelfHeal',
-  OnAllyHeal = 'OnAllyHeal',
-  OnEnemyHeal = 'OnEnemyHeal',
+  OnSelfHeal = 'OnSelfHeal',          // when this character heals
+  OnAllyHeal = 'OnAllyHeal',          // when an ally (not this character) heals
+  OnEnemyHeal = 'OnEnemyHeal',        // when an enemy heals
 
-  OnRoundStart = 'OnRoundStart',
-  OnRoundEnd = 'OnRoundEnd',
+  OnRoundStart = 'OnRoundStart',      // when the round starts (before characters take their turns)
+  OnRoundEnd = 'OnRoundEnd',          // when the round ends (after characters have taken their turns)
 
-  OnCombatStart = 'OnCombatStart'
+  OnCombatStart = 'OnCombatStart'     // when the combat starts
 }
 
 export const abilityTriggerEnumT: t.Type<AbilityTrigger> = enumT('AbilityTrigger', AbilityTrigger);
@@ -32,47 +32,42 @@ export enum AbilityEffect {
   None = '', // used for editor
 
   // stat related
-  StatBoost = 'StatBoost',
-  ConvertStat = 'ConvertStat',
+  StatBoost = 'StatBoost',                                      // boost a characters stat by the value given
+  ConvertStat = 'ConvertStat',                                  // convert X of a stat to the stat given
 
-  HPRegen = 'HPRegen',
-  HPLeech = 'HPLeech',
+  HPRegen = 'HPRegen',                                          // regenerate X hp when the trigger happens
+  HPLeech = 'HPLeech',                                          // leech X hp when the trigger happens (typically, OnXHit)
 
-  SpecialGaugeBoost = 'SpecialGaugeBoost',
-  SpecialGaugeRegen = 'SpecialGaugeRegen',
-  SpecialGaugeLeech = 'SpecialGaugeLeech',
+  SpecialGaugeBoost = 'SpecialGaugeBoost',                      // boost the connect gauge when the trigger happens
+  SpecialGaugeLeech = 'SpecialGaugeLeech',                      // leech X gauge when the trigger happens (typically, OnXHit)
 
   // damage related
-  Counterattack = 'Counterattack',
+  Counterattack = 'Counterattack',                              // counterattack with a basic attack when trigger happens (probably, OnSelfHit)
 
-  OutgoingStatDamage = 'OutgoingStatDamage',
-  IncomingStatDamage = 'IncomingStatDamage',
+  OutgoingStatDamage = 'OutgoingStatDamage',                    // boost or reduce outgoing stat damage (e.g. +50% MAG means all MAG damage is boosted by an additional 50%)
+  IncomingStatDamage = 'IncomingStatDamage',                    // boost or reduce incoming stat damage
 
-  OutgoingSkillDamage = 'OutgoingSkillDamage',
-  OutgoingSpecialDamage = 'OutgoingSpecialDamage',
-  OutgoingBasicAttackDamage = 'OutgoingBasicAttackDamage',
-  OutgoingMonsterTypeDamage = 'OutgoingMonsterTypeDamage',
-  IncomingMonsterTypeDamage = 'IncomingMonsterTypeDamage',
+  OutgoingSkillDamage = 'OutgoingSkillDamage',                  // boost or reduce outgoing skill damage
+  OutgoingSpecialDamage = 'OutgoingSpecialDamage',              // boost or reduce outgoing connect damage
+  OutgoingBasicAttackDamage = 'OutgoingBasicAttackDamage',      // boost or reduce outgoing basic attack damage
+  OutgoingMonsterTypeDamage = 'OutgoingMonsterTypeDamage',      // boost or reduce outgoing damage to a specific monster type
+  IncomingMonsterTypeDamage = 'IncomingMonsterTypeDamage',      // boost or reduce incoming damage from a specific monster type
 
-  OutgoingElementDamage = 'OutgoingElementDamage',
-  IncomingElementDamage = 'IncomingElementDamage',
+  OutgoingElementDamage = 'OutgoingElementDamage',              // boost or reduce outgoing element damage
+  IncomingElementDamage = 'IncomingElementDamage',              // boost or reduce incoming element damage
 
-  DamageBoostSingleTarget = 'DamageBoostSingleTarget',
-  DamageBoostMultiTarget = 'DamageBoostMultiTarget',
-
-  NegateDamageInstances = 'NegateDamageInstances',
+  DamageBoostSingleTarget = 'DamageBoostSingleTarget',          // boost or reduce damage to single target attacks (still applies if an AoE attack only hits one target)
+  DamageBoostMultiTarget = 'DamageBoostMultiTarget',            // boost or reduce damage that hit multiple targets (only applies if an AoE attack hits >1 target)
 
   // status effect related
-  ResistStatusEffect = 'ResistStatusEffect',
-  InflictStatusEffect = 'InflictStatusEffect',
+  ResistStatusEffect = 'ResistStatusEffect',                    // resist a status effect X% of the time (non-% values don't work here)
+  InflictStatusEffect = 'InflictStatusEffect',                  // inflict a status element X% more of the time (non-% values don't work here)
 
-  BasicAttackStatusEffect = 'BasicAttackStatusEffect',
-  PhysicalAttackStatusEffect = 'PhysicalAttackStatusEffect',
-  MagicalAttackStatusEffect = 'MagicalAttackStatusEffect',
-  SkillStatusEffect = 'SkillStatusEffect',
-  SpecialStatusEffect = 'SpecialStatusEffect',
+  BasicAttackStatusEffect = 'BasicAttackStatusEffect',          // apply a status effect X% of the time when doing a basic attack
+  SkillStatusEffect = 'SkillStatusEffect',                      // apply a status effect X% of the time when doing any non-connect skill
+  SpecialStatusEffect = 'SpecialStatusEffect',                  // apply a status effect X% of the time when doing a connect skill
 
-  StatusEffectDuration = 'StatusEffectDuration',
+  StatusEffectDuration = 'StatusEffectDuration',                // buff or reduce status effect durations by a certain value (% does not apply here)
 
   // explosion
   // BasicAttackExplodes = 'BasicAttackExplodes',
@@ -81,22 +76,22 @@ export enum AbilityEffect {
   // SkillExplodes = 'SkillExplodes',
 
   // misc
-  GenerateElementOnBasicAttack = 'GenerateElementOnBasicAttack',
-  GenerateElementOnPhysicalAttack = 'GenerateElementOnPhysicalAttack',
-  GenerateElementOnMagicalAttack = 'GenerateElementOnMagicalAttack',
-  GenerateElementOnAllAttack = 'GenerateElementOnAllAttack',
+  GenerateElementOnBasicAttack = 'GenerateElementOnBasicAttack',        // generate a specific element and a number of stacks on a basic attack
+  GenerateElementOnSkill = 'GenerateElementOnSkill',                    // generate a specific element and a number of stacks when using a skill
+  GenerateElementOnSpecial = 'GenerateElementOnSpecial',                // generate a specific element and a number of stacks when doing a connect skill
   
-  PhysicalAttackElement = 'PhysicalAttackElement',
-  MagicalAttackElement = 'MagicalAttackElement',
+  AttackElementBasic = 'AttackElementBasic',                            // treat all basic attacks additionally as X element
+  AttackElementSkill = 'AttackElementSkill',                            // treat all skills additionally as X element
+  AttackElementSpecial = 'AttackElementSpecial',                        // treat connect skill additionally as X element
 
-  SurviveDeath = 'SurviveDeath',
-  AdditionalHit = 'AdditionalHit',
+  SurviveDeath = 'SurviveDeath',                                        // survive death when dealt X% of max HP with Y% HP
+  AdditionalHit = 'AdditionalHit',                                      // all skills deal an additional X hits
 
-  CastSpeedChange = 'CastSpeedChange',
-  CooldownChange = 'CooldownReductionChange',
-  Overheal = 'Overheal',
+  CastSpeedChange = 'CastSpeedChange',                                  // boost or reduce cast speed (no %)
+  CooldownChange = 'CooldownReductionChange',                           // boost or reduce cooldowns (no %)
+  Overheal = 'Overheal',                                                // allow overhealing of HP in combat - healing matching the trigger/target can exceed max HP
 
-  ModifyBaseSkill = 'ModifyBaseSkill'
+  ModifyBaseSkill = 'ModifyBaseSkill'                                   // modify a base skill SPECIFICALLY and only - will boost all damage/healing of that specific skill by X
 
 }
 

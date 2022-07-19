@@ -14,6 +14,7 @@ export * from './IMap';
 export * from './IShop';
 export * from './ISkill';
 export * from './ISpritesheetData';
+export * from './IStatusEffect';
 export * from './IStore';
 export * from './IWeapon';
 export * from './Matrices';

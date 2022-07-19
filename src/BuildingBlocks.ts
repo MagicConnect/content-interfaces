@@ -71,8 +71,7 @@ export enum StatusEffect {
   SPCUp = 'SPCUp',
   ACCUp = 'ACCUp',
   CRITUp = 'CRITUp',
-  PEVAUp = 'PEVAUp',
-  MEVAUp = 'MEVAUp',
+  EVAUp = 'EVAUp',
 
   // stat debuffs
   HPDown = 'HPDown',
@@ -82,8 +81,7 @@ export enum StatusEffect {
   SPCDown = 'SPCDown',
   ACCDown = 'ACCDown',
   CRITDown = 'CRITDown',
-  PEVADown = 'PEVADown',
-  MEVADown = 'MEVADown',
+  EVADown = 'EVADown',
 }
 export const statusEffectEnumT: t.Type<StatusEffect> = enumT('StatusEffect', StatusEffect);
 
@@ -93,15 +91,14 @@ export enum Stat {
   Magic = 'magic',
   Special = 'special',
   HP = 'hp',
-  MeleeEvasion = 'meleeEvasion',
-  MagicEvasion = 'magicEvasion',
+  Evasion = 'evasion',
   Critical = 'critical',
   Accuracy = 'accuracy'
 }
 export const statEnumT: t.Type<Stat> = enumT('Stat', Stat);
 
 export type PrimaryStat = Stat.Attack | Stat.Defense | Stat.Magic | Stat.Special;
-export type SecondaryStat = Stat.HP | Stat.MeleeEvasion | Stat.MagicEvasion | Stat.Critical | Stat.Accuracy;
+export type SecondaryStat = Stat.HP | Stat.Evasion | Stat.Critical | Stat.Accuracy;
 
 export const primaryStatT: t.Type<PrimaryStat> = t.union([
   t.literal(Stat.Attack),
@@ -111,8 +108,7 @@ export const primaryStatT: t.Type<PrimaryStat> = t.union([
 ]);
 export const secondaryStatT: t.Type<SecondaryStat> = t.union([
   t.literal(Stat.HP),
-  t.literal(Stat.MeleeEvasion),
-  t.literal(Stat.MagicEvasion),
+  t.literal(Stat.Evasion),
   t.literal(Stat.Critical),
   t.literal(Stat.Accuracy),
 ]);

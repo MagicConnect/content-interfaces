@@ -20,8 +20,7 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.HP]: 40,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
-      [Stat.MagicEvasion]: 0,
-      [Stat.MeleeEvasion]: 0,
+      [Stat.Evasion]: 0,
     },
 
     levelupPoints: {
@@ -33,8 +32,7 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.HP]: 6,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
-      [Stat.MagicEvasion]: 0,
-      [Stat.MeleeEvasion]: 0,
+      [Stat.Evasion]: 0,
     },
 
     limitBreakPoints: {
@@ -46,8 +44,7 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.HP]: 20,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
-      [Stat.MagicEvasion]: 0,
-      [Stat.MeleeEvasion]: 0,
+      [Stat.Evasion]: 0,
     }
   },
 
@@ -61,8 +58,7 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.HP]: 10,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
-      [Stat.MagicEvasion]: 0,
-      [Stat.MeleeEvasion]: 0,
+      [Stat.Evasion]: 0,
     },
 
     levelupPoints: {
@@ -74,8 +70,7 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.HP]: 2,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
-      [Stat.MagicEvasion]: 0,
-      [Stat.MeleeEvasion]: 0,
+      [Stat.Evasion]: 0,
     },
 
     limitBreakPoints: {
@@ -87,8 +82,7 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.HP]: 10,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
-      [Stat.MagicEvasion]: 0,
-      [Stat.MeleeEvasion]: 0,
+      [Stat.Evasion]: 0,
     }
   },
 
@@ -102,8 +96,7 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.HP]: 30,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
-      [Stat.MagicEvasion]: 0,
-      [Stat.MeleeEvasion]: 0,
+      [Stat.Evasion]: 0,
     },
 
     levelupPoints: {
@@ -115,8 +108,7 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.HP]: 4,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
-      [Stat.MagicEvasion]: 0,
-      [Stat.MeleeEvasion]: 0,
+      [Stat.Evasion]: 0,
     },
 
     limitBreakPoints: {
@@ -128,8 +120,7 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.HP]: 30,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
-      [Stat.MagicEvasion]: 0,
-      [Stat.MeleeEvasion]: 0,
+      [Stat.Evasion]: 0,
     }
   },
 
@@ -143,8 +134,7 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.HP]: 15,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
-      [Stat.MagicEvasion]: 0,
-      [Stat.MeleeEvasion]: 0,
+      [Stat.Evasion]: 0,
     },
 
     levelupPoints: {
@@ -156,8 +146,7 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.HP]: 4,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
-      [Stat.MagicEvasion]: 0,
-      [Stat.MeleeEvasion]: 0,
+      [Stat.Evasion]: 0,
     },
 
     limitBreakPoints: {
@@ -169,8 +158,7 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.HP]: 20,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
-      [Stat.MagicEvasion]: 0,
-      [Stat.MeleeEvasion]: 0,
+      [Stat.Evasion]: 0,
     }
   },
   
@@ -184,8 +172,7 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.HP]: 20,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
-      [Stat.MagicEvasion]: 0,
-      [Stat.MeleeEvasion]: 0,
+      [Stat.Evasion]: 0,
     },
 
     levelupPoints: {
@@ -197,8 +184,7 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.HP]: 4,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
-      [Stat.MagicEvasion]: 0,
-      [Stat.MeleeEvasion]: 0,
+      [Stat.Evasion]: 0,
     },
 
     limitBreakPoints: {
@@ -210,8 +196,7 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.HP]: 20,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
-      [Stat.MagicEvasion]: 0,
-      [Stat.MeleeEvasion]: 0,
+      [Stat.Evasion]: 0,
     }
   },
 }

@@ -91,7 +91,13 @@ export enum AbilityEffect {
   CooldownChange = 'CooldownReductionChange',                           // boost or reduce cooldowns (no %)
   Overheal = 'Overheal',                                                // allow overhealing of HP in combat - healing matching the trigger/target can exceed max HP
 
-  ModifyBaseSkill = 'ModifyBaseSkill'                                   // modify a base skill SPECIFICALLY and only - will boost all damage/healing of that specific skill by X
+  ModifyBaseSkill = 'ModifyBaseSkill',                                  // modify a base skill SPECIFICALLY and only - will boost all damage/healing of that specific skill by X
+
+  NegateHits = 'NegateHits',                                            // negate a certain number of hits
+  Stun = 'Stun',                                                        // stunned and cannot act
+  Silence = 'Silence',                                                  // silenced and cannot do skills
+  Push = 'Push',                                                        // push a creature X tiles
+  Pull = 'Pull'                                                         // pull a creature X tiles
 
 }
 

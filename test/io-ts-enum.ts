@@ -5,12 +5,12 @@ import { enumT } from '../src/io-ts-enum';
 
 enum StringEnumTest {
   One = 'one',
-  Two = 'two'
+  Two = 'two',
 }
 
 enum NumberEnumTest {
   One = 1,
-  Two = 2
+  Two = 2,
 }
 
 function enumTestMacro(enumName: string, e: Record<string, string | number>) {
@@ -22,8 +22,8 @@ function enumTestMacro(enumName: string, e: Record<string, string | number>) {
     },
     fail: (t: ExecutionContext, input: string | number) => {
       t.deepEqual<'Left' | 'Right'>(enumTestT.decode(input)._tag, 'Left');
-    }
-  }
+    },
+  };
 }
 
 const stringEnumTestMacro = enumTestMacro('StringEnumTest', StringEnumTest);

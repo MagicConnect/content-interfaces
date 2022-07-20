@@ -1,5 +1,5 @@
 import * as t from 'io-ts';
-import { IIdentifiable } from "./IIdentifiable";
+import { IIdentifiable } from './IIdentifiable';
 import { enumT } from './io-ts-enum';
 
 export enum CalendarBonusRepeat {
@@ -8,7 +8,10 @@ export enum CalendarBonusRepeat {
   ConditionallyRepeatable = 'ConditionallyRepeatable',
 }
 
-export const calendarBonusRepeatT = enumT('CalendarBonusRepeat', CalendarBonusRepeat);
+export const calendarBonusRepeatT = enumT(
+  'CalendarBonusRepeat',
+  CalendarBonusRepeat,
+);
 
 export interface ICalendarBonusItem {
   day: number;
@@ -20,7 +23,7 @@ export const calendarBonusItemT: t.Type<ICalendarBonusItem> = t.type({
   day: t.number,
   itemId: t.string,
   quantity: t.number,
-})
+});
 
 export interface ICalendarBonus extends IIdentifiable {
   name: string;

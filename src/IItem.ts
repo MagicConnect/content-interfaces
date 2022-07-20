@@ -10,7 +10,7 @@ export enum ItemType {
   ShopToken = 'ShopToken',
   Gold = 'Gold',
   Crystal = 'Crystal',
-  
+
   GeneralDraw = 'GeneralDraw',
   LimitedDraw = 'LimitedDraw',
 
@@ -109,6 +109,6 @@ export const itemT: t.Type<IItem> = t.intersection([
     itemType: itemTypeT,
   }),
   t.partial({
-    cosmeticCharacterFor: t.string
-  })
+    cosmeticCharacterFor: t.string,
+  }),
 ]);

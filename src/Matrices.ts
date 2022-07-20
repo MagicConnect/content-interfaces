@@ -1,4 +1,3 @@
-
 import { Archetype, Stat } from './BuildingBlocks';
 
 export interface ArchetypeStatMatrix {
@@ -16,7 +15,7 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Defense]: 2,
       [Stat.Magic]: 0,
       [Stat.HP]: 40,
-  
+
       [Stat.Special]: 0,
       [Stat.Accuracy]: 0,
       [Stat.Critical]: 0,
@@ -161,7 +160,7 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Evasion]: 1,
     }
   },
-  
+
   [Archetype.Ranger]: {
     baseStatPoints: {
       [Stat.Attack]: 4,
@@ -199,4 +198,4 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Evasion]: 1,
     }
   },
-}
+};

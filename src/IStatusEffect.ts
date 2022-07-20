@@ -1,5 +1,10 @@
 import { Stat, StatusEffect } from './BuildingBlocks';
-import { AbilityEffect, AbilityTarget, AbilityTrigger, IAbilityEffect } from './IAbility';
+import {
+  AbilityEffect,
+  AbilityTarget,
+  AbilityTrigger,
+  IAbilityEffect,
+} from './IAbility';
 
 export interface IStatusEffect {
   name: string;
@@ -9,7 +14,6 @@ export interface IStatusEffect {
 }
 
 export const statusEffects: Record<StatusEffect, IStatusEffect> = {
-
   // debuffs
   [StatusEffect.ACCDown]: {
     name: 'Accuracy Down I',
@@ -19,9 +23,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.StatBoost,
         target: AbilityTarget.Self,
-        props: { baseValue: -10, baseStat: Stat.Accuracy, isPercent: true }
-      }
-    ]
+        props: { baseValue: -10, baseStat: Stat.Accuracy, isPercent: true },
+      },
+    ],
   },
   [StatusEffect.ATKDown]: {
     name: 'Attack Down I',
@@ -31,9 +35,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.StatBoost,
         target: AbilityTarget.Self,
-        props: { baseValue: -10, baseStat: Stat.Attack, isPercent: true }
-      }
-    ]
+        props: { baseValue: -10, baseStat: Stat.Attack, isPercent: true },
+      },
+    ],
   },
   [StatusEffect.CRITDown]: {
     name: 'Critical Down I',
@@ -43,9 +47,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.StatBoost,
         target: AbilityTarget.Self,
-        props: { baseValue: -5, baseStat: Stat.Critical, isPercent: true }
-      }
-    ]
+        props: { baseValue: -5, baseStat: Stat.Critical, isPercent: true },
+      },
+    ],
   },
   [StatusEffect.DEFDown]: {
     name: 'Defense Down I',
@@ -55,9 +59,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.StatBoost,
         target: AbilityTarget.Self,
-        props: { baseValue: -10, baseStat: Stat.Defense, isPercent: true }
-      }
-    ]
+        props: { baseValue: -10, baseStat: Stat.Defense, isPercent: true },
+      },
+    ],
   },
   [StatusEffect.EVADown]: {
     name: 'Evasion Down I',
@@ -67,9 +71,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.StatBoost,
         target: AbilityTarget.Self,
-        props: { baseValue: -10, baseStat: Stat.Evasion, isPercent: true }
-      }
-    ]
+        props: { baseValue: -10, baseStat: Stat.Evasion, isPercent: true },
+      },
+    ],
   },
   [StatusEffect.HPDown]: {
     name: 'HP Down I',
@@ -79,9 +83,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.StatBoost,
         target: AbilityTarget.Self,
-        props: { baseValue: -10, baseStat: Stat.HP, isPercent: true }
-      }
-    ]
+        props: { baseValue: -10, baseStat: Stat.HP, isPercent: true },
+      },
+    ],
   },
   [StatusEffect.MAGDown]: {
     name: 'Magic Down I',
@@ -91,9 +95,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.StatBoost,
         target: AbilityTarget.Self,
-        props: { baseValue: -10, baseStat: Stat.Magic, isPercent: true }
-      }
-    ]
+        props: { baseValue: -10, baseStat: Stat.Magic, isPercent: true },
+      },
+    ],
   },
   [StatusEffect.SPCDown]: {
     name: 'Special Down I',
@@ -103,9 +107,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.StatBoost,
         target: AbilityTarget.Self,
-        props: { baseValue: -10, baseStat: Stat.Special, isPercent: true }
-      }
-    ]
+        props: { baseValue: -10, baseStat: Stat.Special, isPercent: true },
+      },
+    ],
   },
 
   // buffs
@@ -117,9 +121,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.StatBoost,
         target: AbilityTarget.Self,
-        props: { baseValue: 10, baseStat: Stat.Accuracy, isPercent: true }
-      }
-    ]
+        props: { baseValue: 10, baseStat: Stat.Accuracy, isPercent: true },
+      },
+    ],
   },
   [StatusEffect.ATKUp]: {
     name: 'Accuracy Up I',
@@ -129,9 +133,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.StatBoost,
         target: AbilityTarget.Self,
-        props: { baseValue: 10, baseStat: Stat.Attack, isPercent: true }
-      }
-    ]
+        props: { baseValue: 10, baseStat: Stat.Attack, isPercent: true },
+      },
+    ],
   },
   [StatusEffect.CRITUp]: {
     name: 'Critical Up I',
@@ -141,9 +145,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.StatBoost,
         target: AbilityTarget.Self,
-        props: { baseValue: 10, baseStat: Stat.Critical, isPercent: true }
-      }
-    ]
+        props: { baseValue: 10, baseStat: Stat.Critical, isPercent: true },
+      },
+    ],
   },
   [StatusEffect.DEFUp]: {
     name: 'Defense Up I',
@@ -153,9 +157,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.StatBoost,
         target: AbilityTarget.Self,
-        props: { baseValue: 10, baseStat: Stat.Defense, isPercent: true }
-      }
-    ]
+        props: { baseValue: 10, baseStat: Stat.Defense, isPercent: true },
+      },
+    ],
   },
   [StatusEffect.EVAUp]: {
     name: 'Evasion Up I',
@@ -165,9 +169,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.StatBoost,
         target: AbilityTarget.Self,
-        props: { baseValue: 10, baseStat: Stat.Evasion, isPercent: true }
-      }
-    ]
+        props: { baseValue: 10, baseStat: Stat.Evasion, isPercent: true },
+      },
+    ],
   },
   [StatusEffect.HPUp]: {
     name: 'HP Up I',
@@ -177,9 +181,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.StatBoost,
         target: AbilityTarget.Self,
-        props: { baseValue: 10, baseStat: Stat.HP, isPercent: true }
-      }
-    ]
+        props: { baseValue: 10, baseStat: Stat.HP, isPercent: true },
+      },
+    ],
   },
   [StatusEffect.MAGUp]: {
     name: 'Magic Up I',
@@ -189,9 +193,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.StatBoost,
         target: AbilityTarget.Self,
-        props: { baseValue: 10, baseStat: Stat.Magic, isPercent: true }
-      }
-    ]
+        props: { baseValue: 10, baseStat: Stat.Magic, isPercent: true },
+      },
+    ],
   },
   [StatusEffect.SPCUp]: {
     name: 'Special Up I',
@@ -201,9 +205,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.StatBoost,
         target: AbilityTarget.Self,
-        props: { baseValue: 10, baseStat: Stat.Special, isPercent: true }
-      }
-    ]
+        props: { baseValue: 10, baseStat: Stat.Special, isPercent: true },
+      },
+    ],
   },
 
   // special
@@ -215,24 +219,24 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.IncomingStatDamage,
         target: AbilityTarget.Self,
-        props: { baseValue: 10, baseStat: Stat.Magic, isPercent: true }
+        props: { baseValue: 10, baseStat: Stat.Magic, isPercent: true },
       },
       {
         value: AbilityEffect.IncomingStatDamage,
         target: AbilityTarget.Self,
-        props: { baseValue: 10, baseStat: Stat.Attack, isPercent: true }
+        props: { baseValue: 10, baseStat: Stat.Attack, isPercent: true },
       },
       {
         value: AbilityEffect.OutgoingStatDamage,
         target: AbilityTarget.Self,
-        props: { baseValue: -10, baseStat: Stat.Magic, isPercent: true }
+        props: { baseValue: -10, baseStat: Stat.Magic, isPercent: true },
       },
       {
         value: AbilityEffect.OutgoingStatDamage,
         target: AbilityTarget.Self,
-        props: { baseValue: -10, baseStat: Stat.Attack, isPercent: true }
-      }
-    ]
+        props: { baseValue: -10, baseStat: Stat.Attack, isPercent: true },
+      },
+    ],
   },
   [StatusEffect.Poison]: {
     name: 'Poison I',
@@ -242,9 +246,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.StatBoost,
         target: AbilityTarget.Self,
-        props: { baseValue: -3, baseStat: Stat.HP, isPercent: true }
-      }
-    ]
+        props: { baseValue: -3, baseStat: Stat.HP, isPercent: true },
+      },
+    ],
   },
   [StatusEffect.Silence]: {
     name: 'Silence I',
@@ -254,9 +258,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.Silence,
         target: AbilityTarget.Self,
-        props: { baseValue: 1 }
-      }
-    ]
+        props: { baseValue: 1 },
+      },
+    ],
   },
   [StatusEffect.Stun]: {
     name: 'Stun I',
@@ -266,9 +270,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.Stun,
         target: AbilityTarget.Self,
-        props: { baseValue: 1 }
-      }
-    ]
+        props: { baseValue: 1 },
+      },
+    ],
   },
 
   [StatusEffect.Barrier]: {
@@ -279,9 +283,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.IncomingStatDamage,
         target: AbilityTarget.Self,
-        props: { baseValue: -15, baseStat: Stat.Magic, isPercent: true }
-      }
-    ]
+        props: { baseValue: -15, baseStat: Stat.Magic, isPercent: true },
+      },
+    ],
   },
   [StatusEffect.Deflect]: {
     name: 'Deflect I',
@@ -291,9 +295,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.IncomingStatDamage,
         target: AbilityTarget.Self,
-        props: { baseValue: -15, baseStat: Stat.Attack, isPercent: true }
-      }
-    ]
+        props: { baseValue: -15, baseStat: Stat.Attack, isPercent: true },
+      },
+    ],
   },
   [StatusEffect.Regen]: {
     name: 'Regen I',
@@ -303,9 +307,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.StatBoost,
         target: AbilityTarget.Self,
-        props: { baseValue: 3, baseStat: Stat.HP, isPercent: true }
-      }
-    ]
+        props: { baseValue: 3, baseStat: Stat.HP, isPercent: true },
+      },
+    ],
   },
   [StatusEffect.Shield]: {
     name: 'Shield I',
@@ -315,9 +319,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.IncomingStatDamage,
         target: AbilityTarget.Self,
-        props: { baseValue: -15, baseStat: Stat.Attack, isPercent: true }
-      }
-    ]
+        props: { baseValue: -15, baseStat: Stat.Attack, isPercent: true },
+      },
+    ],
   },
 
   [StatusEffect.Push]: {
@@ -328,9 +332,9 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.Push,
         target: AbilityTarget.Self,
-        props: { baseValue: 1 }
-      }
-    ]
+        props: { baseValue: 1 },
+      },
+    ],
   },
   [StatusEffect.Pull]: {
     name: 'Pull I',
@@ -340,8 +344,8 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
       {
         value: AbilityEffect.Pull,
         target: AbilityTarget.Self,
-        props: { baseValue: 1 }
-      }
-    ]
-  }
+        props: { baseValue: 1 },
+      },
+    ],
+  },
 };

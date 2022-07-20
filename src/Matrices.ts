@@ -7,7 +7,7 @@ export interface ArchetypeStatMatrix {
   limitBreakPoints: Record<Stat, number>;
 }
 
-// pick 25 LB points, 25 levelup points, 25 base stat points
+// pick 5 LB points, 25 levelup points, 25 base stat points
 
 export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
   [Archetype.Attacker]: {
@@ -41,10 +41,10 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Magic]: 0,
       [Stat.HP]: 0,
 
-      [Stat.Special]: 1,
-      [Stat.Accuracy]: 0.2,
-      [Stat.Critical]: 0.6,
-      [Stat.Evasion]: 0.2,
+      [Stat.Special]: 10,
+      [Stat.Accuracy]: 0,
+      [Stat.Critical]: 2,
+      [Stat.Evasion]: 1,
     }
   },
 
@@ -79,10 +79,10 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Magic]: 0,
       [Stat.HP]: 0,
 
-      [Stat.Special]: 3,
-      [Stat.Accuracy]: 0.4,
-      [Stat.Critical]: 0.4,
-      [Stat.Evasion]: 0.2,
+      [Stat.Special]: 20,
+      [Stat.Accuracy]: 1,
+      [Stat.Critical]: 2,
+      [Stat.Evasion]: 0,
     }
   },
 
@@ -117,10 +117,10 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Magic]: 0,
       [Stat.HP]: 0,
 
-      [Stat.Special]: 2,
-      [Stat.Accuracy]: 0.2,
-      [Stat.Critical]: 0.2,
-      [Stat.Evasion]: 0.6,
+      [Stat.Special]: 15,
+      [Stat.Accuracy]: 1,
+      [Stat.Critical]: 0,
+      [Stat.Evasion]: 2,
     }
   },
 
@@ -155,10 +155,10 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Magic]: 0,
       [Stat.HP]: 0,
 
-      [Stat.Special]: 4,
-      [Stat.Accuracy]: 0.4,
-      [Stat.Critical]: 0.2,
-      [Stat.Evasion]: 0.4,
+      [Stat.Special]: 25,
+      [Stat.Accuracy]: 1,
+      [Stat.Critical]: 1,
+      [Stat.Evasion]: 1,
     }
   },
   
@@ -193,10 +193,10 @@ export const StatAllocationMatrix: Record<Archetype, ArchetypeStatMatrix> = {
       [Stat.Magic]: 0,
       [Stat.HP]: 0,
 
-      [Stat.Special]: 2,
-      [Stat.Accuracy]: 0.6,
-      [Stat.Critical]: 0.2,
-      [Stat.Evasion]: 0.2,
+      [Stat.Special]: 10,
+      [Stat.Accuracy]: 2,
+      [Stat.Critical]: 0,
+      [Stat.Evasion]: 1,
     }
   },
 }

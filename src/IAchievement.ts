@@ -1,4 +1,3 @@
-
 import * as t from 'io-ts';
 import { IIdentifiable } from './IIdentifiable';
 import { enumT } from './io-ts-enum';
@@ -14,10 +13,12 @@ export enum AchievementCategory {
   Miscellaneous = 'Miscellaneous',
 }
 
-export const achievementCategoryEnumT: t.Type<AchievementCategory> = enumT('AchievementCategory', AchievementCategory);
+export const achievementCategoryEnumT: t.Type<AchievementCategory> = enumT(
+  'AchievementCategory',
+  AchievementCategory,
+);
 
 export enum AchievementStat {
-
   // 5x stats
   Kills = 'Kills',
   KillsAttacker = 'KillsAttacker',
@@ -207,7 +208,10 @@ export enum AchievementStat {
   LoginsThisMonth = 'LoginsThisMonth',
 }
 
-export const achievementStatEnumT: t.Type<AchievementStat> = enumT('AchievementStat', AchievementStat);
+export const achievementStatEnumT: t.Type<AchievementStat> = enumT(
+  'AchievementStat',
+  AchievementStat,
+);
 
 export interface IAchievementReward {
   name: string;
@@ -216,7 +220,7 @@ export interface IAchievementReward {
 
 export const achievementRewardT: t.Type<IAchievementReward> = t.type({
   name: t.string,
-  quantity: t.number
+  quantity: t.number,
 });
 
 export interface IAchievement extends IIdentifiable {
@@ -256,22 +260,22 @@ export const achievementT: t.Type<IAchievement> = t.intersection([
     requirements: t.intersection([
       t.type({
         stat: achievementStatEnumT,
-        statValue: t.number
+        statValue: t.number,
       }),
       t.partial({
         mapName: t.string,
-        mapNodeId: t.number
-      })
+        mapNodeId: t.number,
+      }),
     ]),
 
     rewards: t.type({
       accessories: t.array(achievementRewardT),
       items: t.array(achievementRewardT),
       characters: t.array(achievementRewardT),
-      weapons: t.array(achievementRewardT)
-    })
+      weapons: t.array(achievementRewardT),
+    }),
   }),
   t.partial({
-    lockedBy: t.string
-  })
+    lockedBy: t.string,
+  }),
 ]);

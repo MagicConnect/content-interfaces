@@ -1,5 +1,5 @@
 import * as t from 'io-ts';
-import { enumT } from "./io-ts-enum"
+import { enumT } from './io-ts-enum';
 
 export enum MonsterType {
   Beast = 'Beast',
@@ -10,17 +10,20 @@ export enum MonsterType {
   Humanoid = 'Humanoid',
   Mechanical = 'Mechanical',
   Plant = 'Plant',
-  Undead = 'Undead'
+  Undead = 'Undead',
 }
 
-export const monsterTypeEnumT: t.Type<MonsterType> = enumT('MonsterType', MonsterType);
+export const monsterTypeEnumT: t.Type<MonsterType> = enumT(
+  'MonsterType',
+  MonsterType,
+);
 
 export enum Archetype {
   Attacker = 'Attacker',
   Caster = 'Caster',
   Defender = 'Defender',
   Healer = 'Healer',
-  Ranger = 'Ranger'
+  Ranger = 'Ranger',
 }
 export const archetypeEnumT: t.Type<Archetype> = enumT('Archetype', Archetype);
 
@@ -31,7 +34,7 @@ export enum Weapon {
   Greatsword = 'Greatsword',
   Knuckles = 'Knuckles',
   Staff = 'Staff',
-  SwordAndShield = 'SwordAndShield'
+  SwordAndShield = 'SwordAndShield',
 }
 export const weaponEnumT: t.Type<Weapon> = enumT('Weapon', Weapon);
 
@@ -42,26 +45,25 @@ export enum Element {
   Thunder = 'Thunder',
   Earth = 'Earth',
   Dark = 'Dark',
-  Light = 'Light'
+  Light = 'Light',
 }
 export const elementEnumT: t.Type<Element> = enumT('Element', Element);
 
 export enum StatusEffect {
-
   // unique debuffs
-  Curse = 'Curse',        // outgoing damage reduced, incoming damage increased
-  Poison = 'Poison',      // taking damage every turn
-  Silence = 'Silence',    // cannot use skills
-  Stun = 'Stun',          // cannot act for a turn
+  Curse = 'Curse', // outgoing damage reduced, incoming damage increased
+  Poison = 'Poison', // taking damage every turn
+  Silence = 'Silence', // cannot use skills
+  Stun = 'Stun', // cannot act for a turn
 
   // unique buffs
-  Barrier = 'Barrier',    // lower incoming magical damage
-  Deflect = 'Deflect',    // negate incoming damage X times
-  Regen = 'Regen',        // heal every turn
-  Shield = 'Shield',      // lower incoming physical damage
+  Barrier = 'Barrier', // lower incoming magical damage
+  Deflect = 'Deflect', // negate incoming damage X times
+  Regen = 'Regen', // heal every turn
+  Shield = 'Shield', // lower incoming physical damage
 
-  Push = 'Push',          // push the enemy back X spaces
-  Pull = 'Pull',          // pull the enemy forward X spaces
+  Push = 'Push', // push the enemy back X spaces
+  Pull = 'Pull', // pull the enemy forward X spaces
 
   // stat buffs
   HPUp = 'HPUp',
@@ -83,7 +85,10 @@ export enum StatusEffect {
   CRITDown = 'CRITDown',
   EVADown = 'EVADown',
 }
-export const statusEffectEnumT: t.Type<StatusEffect> = enumT('StatusEffect', StatusEffect);
+export const statusEffectEnumT: t.Type<StatusEffect> = enumT(
+  'StatusEffect',
+  StatusEffect,
+);
 
 export enum Stat {
   Attack = 'attack',
@@ -93,12 +98,20 @@ export enum Stat {
   HP = 'hp',
   Evasion = 'evasion',
   Critical = 'critical',
-  Accuracy = 'accuracy'
+  Accuracy = 'accuracy',
 }
 export const statEnumT: t.Type<Stat> = enumT('Stat', Stat);
 
-export type PrimaryStat = Stat.Attack | Stat.Defense | Stat.Magic | Stat.Special;
-export type SecondaryStat = Stat.HP | Stat.Evasion | Stat.Critical | Stat.Accuracy;
+export type PrimaryStat =
+  | Stat.Attack
+  | Stat.Defense
+  | Stat.Magic
+  | Stat.Special;
+export type SecondaryStat =
+  | Stat.HP
+  | Stat.Evasion
+  | Stat.Critical
+  | Stat.Accuracy;
 
 export const primaryStatT: t.Type<PrimaryStat> = t.union([
   t.literal(Stat.Attack),

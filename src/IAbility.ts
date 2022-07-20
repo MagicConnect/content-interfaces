@@ -253,8 +253,7 @@ export interface IAbilityUtility {
 
 export interface IAbility extends IIdentifiable, IAbilityUtility {
   isAbilityUsedAtBase: boolean;
-  dupeChanges: Record<string, IAbilityUtility & { shouldHide: boolean }>;
-  lbChanges: Record<string, IAbilityUtility & { shouldHide: boolean }>;
+  abilityChanges: Record<string, IAbilityUtility & { shouldHide: boolean }>;
 }
 
 export const abilityT: t.Type<IAbility> = t.recursion('Ability', () =>
@@ -268,16 +267,7 @@ export const abilityT: t.Type<IAbility> = t.recursion('Ability', () =>
     effects: t.array(abilityEffectT),
     conditions: t.array(abilityConditionT),
 
-    dupeChanges: t.record(intStringT, t.type({ 
-      name: t.string,
-      description: t.string,
-      trigger: abilityTriggerEnumT,
-      effects: t.array(abilityEffectT),
-      conditions: t.array(abilityConditionT),
-      shouldHide: t.boolean 
-    })),
-
-    lbChanges: t.record(intStringT, t.type({ 
+    abilityChanges: t.record(intStringT, t.type({ 
       name: t.string,
       description: t.string,
       trigger: abilityTriggerEnumT,

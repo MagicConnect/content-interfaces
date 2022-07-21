@@ -133,6 +133,8 @@ export const passiveEffectTypeEnumT: t.Type<PassiveEffectType> = enumT(
 export enum AbilityTarget {
   Self = 'Self',
   All = 'All',
+  SkillTarget = 'SkillTarget',
+  TriggerTarget = 'TriggerTarget',
 
   AllEnemies = 'AllEnemies',
   AllAllies = 'AllAllies',
@@ -322,7 +324,6 @@ export const abilityConditionT: t.Type<IAbilityCondition> = t.type({
 export interface IAbilityUtility {
   name: string;
   description: string;
-  trigger: AbilityTrigger;
   effects: IPassiveEffect[];
   conditions: IAbilityCondition[];
 }
@@ -339,7 +340,6 @@ export const abilityT: t.Type<IAbility> = t.recursion('Ability', () =>
     name: t.string,
     description: t.string,
 
-    trigger: abilityTriggerEnumT,
     effects: t.array(passiveEffectT),
     conditions: t.array(abilityConditionT),
 
@@ -348,7 +348,6 @@ export const abilityT: t.Type<IAbility> = t.recursion('Ability', () =>
       t.type({
         name: t.string,
         description: t.string,
-        trigger: abilityTriggerEnumT,
         effects: t.array(passiveEffectT),
         conditions: t.array(abilityConditionT),
         shouldHide: t.boolean,

@@ -114,6 +114,14 @@ export const itemT: t.Type<IItem> = t.intersection([
   }),
 ]);
 
+export interface IDupeableItem {
+  allowedExtraDupeItems: string[];  // other items that can be used to "dupe" into this item (same contentId always allowed)
+}
+
+export const dupeableItemT: t.Type<IDupeableItem> = t.type({
+  allowedExtraDupeItems: t.array(t.string)
+});
+
 export interface IEquippableItem {
   stars: 1 | 2 | 3 | 4 | 5; // item rarity
   primaryStat: PrimaryStat; // item main stat

@@ -5,9 +5,9 @@ import {
   PrimaryStat,
   primaryStatT,
 } from './BuildingBlocks';
-import { equippableItemT, IEquippableItem, IItem, itemT } from './IItem';
+import { dupeableItemT, equippableItemT, IDupeableItem, IEquippableItem, IItem, itemT } from './IItem';
 
-export type IWeapon = IItem & IEquippableItem & {
+export type IWeapon = IItem & IEquippableItem & IDupeableItem & {
   weaponType: Weapon;           // the type of weapon
   secondaryStat?: PrimaryStat;  // weapon secondary stat
   hasHigherPotential?: boolean; // whether the weapon has a higher potential than other items of its type (f.ex. banner weapons have a higher stat potential)
@@ -16,6 +16,7 @@ export type IWeapon = IItem & IEquippableItem & {
 export const weaponT: t.Type<IWeapon> = t.intersection([
   itemT,
   equippableItemT,
+  dupeableItemT,
   t.type({
     weaponType: weaponTypeT,
   }),

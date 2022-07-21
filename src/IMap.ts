@@ -1,20 +1,42 @@
 import * as t from 'io-ts';
 import { Element, elementEnumT } from './BuildingBlocks';
 import { IIdentifiable } from './IIdentifiable';
+import { enumT } from './io-ts-enum';
 import { intStringT } from './io-ts-integer-string-brand';
+
+export enum MapDropType {
+  FirstTimeClear = 'FirstTimeClear',
+
+  // single player
+  StageCompleteGuaranteed = 'StageCompleteGuaranteed',
+  StageCompleteBonus = 'StageCompleteBonus',
+
+  // multiplayer
+  HostCompleteGuaranteed = 'HostCompleteGuaranteed',
+  HostCompleteBonus = 'HostCompleteBonus',
+  GuestCompleteGuaranteed = 'GuestCompleteGuaranteed',
+  GuestCompleteBonus = 'GuestCompleteBonus',
+}
+
+export const mapDropTypeEnumT: t.Type<MapDropType> = enumT(
+  'MapDropType',
+  MapDropType,
+);
 
 export interface IMapNodeDroppable {
   name: string;
   dropPercent: number;
   quantity: number;
-  onlyOneTime: boolean;
+  maxQuantity: number;
+  dropType: MapDropType;
 }
 
 export const mapNodeDroppableT: t.Type<IMapNodeDroppable> = t.type({
   name: t.string,
   dropPercent: t.number,
   quantity: t.number,
-  onlyOneTime: t.boolean,
+  maxQuantity: t.number,
+  dropType: mapDropTypeEnumT
 });
 
 export interface IMap extends IIdentifiable {

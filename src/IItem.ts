@@ -1,4 +1,5 @@
 import * as t from 'io-ts';
+import { PrimaryStat, primaryStatT } from './BuildingBlocks';
 import { IIdentifiable } from './IIdentifiable';
 import { enumT } from './io-ts-enum';
 
@@ -112,3 +113,29 @@ export const itemT: t.Type<IItem> = t.intersection([
     cosmeticCharacterFor: t.string,
   }),
 ]);
+
+export interface IDupeableItem {
+  allowedExtraDupeItems: string[];  // other items that can be used to "dupe" into this item (same contentId always allowed)
+}
+
+export const dupeableItemT: t.Type<IDupeableItem> = t.type({
+  allowedExtraDupeItems: t.array(t.string)
+});
+
+export interface IEquippableItem {
+  stars: 1 | 2 | 3 | 4 | 5; // item rarity
+  primaryStat: PrimaryStat; // item main stat
+  abilities: string[];      // item abilities
+}
+
+export const equippableItemT: t.Type<IEquippableItem> = t.type({
+  stars: t.union([
+    t.literal(1),
+    t.literal(2),
+    t.literal(3),
+    t.literal(4),
+    t.literal(5),
+  ]),
+  primaryStat: primaryStatT,
+  abilities: t.array(t.string)
+})

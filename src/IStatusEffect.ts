@@ -1,7 +1,7 @@
 import { Stat, StatusEffect } from './BuildingBlocks';
 import {
-  AbilityTarget,
-  AbilityTrigger,
+  EffectTarget,
+  ActiveEffectTrigger,
   ActiveEffectType,
   IPassiveEffect,
   PassiveEffectType,
@@ -21,7 +21,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.StatBoost,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: -10, baseStat: Stat.Accuracy, isPercent: true },
       },
     ],
@@ -32,7 +32,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.StatBoost,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: -10, baseStat: Stat.Attack, isPercent: true },
       },
     ],
@@ -43,7 +43,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.StatBoost,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: -5, baseStat: Stat.Critical, isPercent: true },
       },
     ],
@@ -54,7 +54,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.StatBoost,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: -10, baseStat: Stat.Defense, isPercent: true },
       },
     ],
@@ -65,7 +65,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.StatBoost,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: -10, baseStat: Stat.Evasion, isPercent: true },
       },
     ],
@@ -76,7 +76,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.StatBoost,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: -10, baseStat: Stat.HP, isPercent: true },
       },
     ],
@@ -87,7 +87,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.StatBoost,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: -10, baseStat: Stat.Magic, isPercent: true },
       },
     ],
@@ -98,7 +98,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.StatBoost,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: -10, baseStat: Stat.Special, isPercent: true },
       },
     ],
@@ -111,7 +111,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.StatBoost,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: 10, baseStat: Stat.Accuracy, isPercent: true },
       },
     ],
@@ -122,7 +122,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.StatBoost,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: 10, baseStat: Stat.Attack, isPercent: true },
       },
     ],
@@ -133,7 +133,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.StatBoost,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: 10, baseStat: Stat.Critical, isPercent: true },
       },
     ],
@@ -144,7 +144,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.StatBoost,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: 10, baseStat: Stat.Defense, isPercent: true },
       },
     ],
@@ -155,7 +155,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.StatBoost,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: 10, baseStat: Stat.Evasion, isPercent: true },
       },
     ],
@@ -166,7 +166,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.StatBoost,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: 10, baseStat: Stat.HP, isPercent: true },
       },
     ],
@@ -177,7 +177,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.StatBoost,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: 10, baseStat: Stat.Magic, isPercent: true },
       },
     ],
@@ -188,7 +188,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.StatBoost,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: 10, baseStat: Stat.Special, isPercent: true },
       },
     ],
@@ -201,22 +201,22 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.IncomingStatDamage,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: 10, baseStat: Stat.Magic, isPercent: true },
       },
       {
         value: PassiveEffectType.IncomingStatDamage,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: 10, baseStat: Stat.Attack, isPercent: true },
       },
       {
         value: PassiveEffectType.OutgoingStatDamage,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: -10, baseStat: Stat.Magic, isPercent: true },
       },
       {
         value: PassiveEffectType.OutgoingStatDamage,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: -10, baseStat: Stat.Attack, isPercent: true },
       },
     ],
@@ -227,13 +227,13 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.TriggerActive,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: {
-          triggerWhen: AbilityTrigger.OnRoundStart,
+          triggerWhen: ActiveEffectTrigger.OnRoundStart,
           triggerActiveEffects: [
             {
               value: ActiveEffectType.StatBoost,
-              target: AbilityTarget.Self,
+              target: EffectTarget.Self,
               props: { baseValue: -3, baseStat: Stat.HP, isPercent: true },
             },
           ],
@@ -247,7 +247,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.Silence,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: 1 },
       },
     ],
@@ -258,7 +258,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.Stun,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: 1 },
       },
     ],
@@ -270,7 +270,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.IncomingStatDamage,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: -15, baseStat: Stat.Magic, isPercent: true },
       },
     ],
@@ -281,7 +281,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.IncomingStatDamage,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: -15, baseStat: Stat.Attack, isPercent: true },
       },
     ],
@@ -292,7 +292,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.StatBoost,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: 3, baseStat: Stat.HP, isPercent: true },
       },
     ],
@@ -303,7 +303,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
     effects: [
       {
         value: PassiveEffectType.IncomingStatDamage,
-        target: AbilityTarget.Self,
+        target: EffectTarget.Self,
         props: { baseValue: -15, baseStat: Stat.Attack, isPercent: true },
       },
     ],

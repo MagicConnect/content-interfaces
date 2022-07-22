@@ -14,7 +14,7 @@ import { intStringT } from './io-ts-integer-string-brand';
 import { IIdentifiable } from './IIdentifiable';
 
 // enums for abilities
-export enum AbilityTrigger {
+export enum ActiveEffectTrigger {
   OnSelfDeath = 'OnSelfDeath', // when this character dies
   OnAllyDeath = 'OnAllyDeath', // when an ally (not this character) dies
   OnEnemyDeath = 'OnEnemyDeath', // when an enemy dies
@@ -33,9 +33,9 @@ export enum AbilityTrigger {
   OnCombatStart = 'OnCombatStart', // when the combat starts
 }
 
-export const abilityTriggerEnumT: t.Type<AbilityTrigger> = enumT(
-  'AbilityTrigger',
-  AbilityTrigger,
+export const activeEffectTriggerEnumT: t.Type<ActiveEffectTrigger> = enumT(
+  'ActiveEffectTrigger',
+  ActiveEffectTrigger,
 );
 
 export enum ActiveEffectType {
@@ -130,7 +130,7 @@ export const passiveEffectTypeEnumT: t.Type<PassiveEffectType> = enumT(
   PassiveEffectType,
 );
 
-export enum AbilityTarget {
+export enum EffectTarget {
   Self = 'Self',
   All = 'All',
   SkillTarget = 'SkillTarget',
@@ -152,9 +152,9 @@ export enum AbilityTarget {
   AllyNotHealer = 'AllyNotHealer',
 }
 
-export const abilityTargetEnumT: t.Type<AbilityTarget> = enumT(
-  'AbilityTarget',
-  AbilityTarget,
+export const effectTargetEnumT: t.Type<EffectTarget> = enumT(
+  'EffectTarget',
+  EffectTarget,
 );
 
 export enum AbilityCondition {
@@ -193,7 +193,7 @@ export const abilityConditionEnumT: t.Type<AbilityCondition> = enumT(
 // interfaces for ability props / abilities
 
 export interface ICommonEffectProps {
-  effectTarget?: AbilityTarget; // the target of the ability (used for effects like leech)
+  effectTarget?: EffectTarget; // the target of the ability (used for effects like leech)
 
   isPercent?: boolean; // if this ability effect should change by a percent, this is true
   baseValue?: number; // the base value of the effect (used for effects that rely on stats)
@@ -208,7 +208,7 @@ export interface ICommonEffectProps {
 }
 
 export const commonEffectPropsT: t.Type<ICommonEffectProps> = t.partial({
-  effectTarget: abilityTargetEnumT,
+  effectTarget: effectTargetEnumT,
 
   isPercent: t.boolean,
   baseValue: t.number,
@@ -223,14 +223,14 @@ export const commonEffectPropsT: t.Type<ICommonEffectProps> = t.partial({
 });
 
 export interface IPassiveEffectProps extends ICommonEffectProps {
-  triggerWhen?: AbilityTrigger;
+  triggerWhen?: ActiveEffectTrigger;
   triggerActiveEffects?: IActiveEffect[];
 }
 
 export const passiveEffectPropsT: t.Type<IPassiveEffectProps> = t.intersection([
   commonEffectPropsT,
   t.partial({
-    triggerWhen: abilityTriggerEnumT,
+    triggerWhen: activeEffectTriggerEnumT,
     triggerActiveEffects: t.array(
       t.recursion<IActiveEffect>('IActiveEffect', () => activeEffectT),
     ),
@@ -290,25 +290,25 @@ export const abilityConditionPropsT: t.Type<IAbilityConditionProps> = t.partial(
 export interface IActiveEffect {
   value: ActiveEffectType;
   props: IActiveEffectProps;
-  target: AbilityTarget;
+  target: EffectTarget;
 }
 
 export const activeEffectT: t.Type<IActiveEffect> = t.type({
   value: activeEffectTypeEnumT,
   props: activeEffectPropsT,
-  target: abilityTargetEnumT,
+  target: effectTargetEnumT,
 });
 
 export interface IPassiveEffect {
   value: PassiveEffectType;
   props: IPassiveEffectProps;
-  target: AbilityTarget;
+  target: EffectTarget;
 }
 
 export const passiveEffectT: t.Type<IPassiveEffect> = t.type({
   value: passiveEffectTypeEnumT,
   props: passiveEffectPropsT,
-  target: abilityTargetEnumT,
+  target: effectTargetEnumT,
 });
 
 export interface IAbilityCondition {

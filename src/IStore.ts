@@ -1,17 +1,13 @@
 import { IIdentifiable } from './IIdentifiable';
-import { ItemType } from './IItem';
 import * as t from 'io-ts';
-import { enumT } from './io-ts-enum';
-
-export const storeItemTypeT = enumT('ItemType', ItemType);
 
 export interface IStoreItemBundle {
-  itemType: ItemType;
+  itemId: string;
   quantity: number;
 }
 
 export const storeItemBundleT: t.Type<IStoreItemBundle> = t.type({
-  itemType: storeItemTypeT,
+  itemId: t.string,
   quantity: t.number,
 });
 

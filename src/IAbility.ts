@@ -38,10 +38,27 @@ export const activeEffectTriggerEnumT: t.Type<ActiveEffectTrigger> = enumT(
   ActiveEffectTrigger,
 );
 
+export enum HitType {
+  BasicAttack = 'BasicAttack',
+  Skill = 'Skill',
+  Special = 'Special',
+}
+
+export const hitTypeEnumT: t.Type<HitType> = enumT('HitType', HitType);
+
+export interface IActiveEffectTriggerProps {
+  hitType?: HitType;
+}
+
+export const activeEffectTriggerPropsT: t.Type<IActiveEffectTriggerProps> =
+  t.partial({
+    hitType: hitTypeEnumT,
+  });
+
 export enum ActiveEffectType {
   None = '',
 
-  StatBoost = 'StatBoost', // boost a characters stat by the value given
+  StatBoostActive = 'StatBoostActive', // boost a characters stat by the value given
 
   HPRegen = 'HPRegen', // regenerate X hp when the trigger happens
   HPLeech = 'HPLeech', // leech X hp when the trigger happens (typically, OnXHit)
@@ -74,9 +91,7 @@ export enum PassiveEffectType {
   OutgoingStatDamage = 'OutgoingStatDamage', // boost or reduce outgoing stat damage (e.g. +50% MAG means all MAG damage is boosted by an additional 50%)
   IncomingStatDamage = 'IncomingStatDamage', // boost or reduce incoming stat damage
 
-  OutgoingSkillDamage = 'OutgoingSkillDamage', // boost or reduce outgoing skill damage
-  OutgoingSpecialDamage = 'OutgoingSpecialDamage', // boost or reduce outgoing connect damage
-  OutgoingBasicAttackDamage = 'OutgoingBasicAttackDamage', // boost or reduce outgoing basic attack damage
+  OutgoingDamage = 'OutgoingSkillDamage', // boost or reduce outgoing damage of given hit type
   OutgoingMonsterTypeDamage = 'OutgoingMonsterTypeDamage', // boost or reduce outgoing damage to a specific monster type
   IncomingMonsterTypeDamage = 'IncomingMonsterTypeDamage', // boost or reduce incoming damage from a specific monster type
 
@@ -89,9 +104,7 @@ export enum PassiveEffectType {
   ResistStatusEffect = 'ResistStatusEffect', // resist a status effect X% of the time (non-% values don't work here)
   InflictStatusEffect = 'InflictStatusEffect', // inflict a status element X% more of the time (non-% values don't work here)
 
-  BasicAttackStatusEffect = 'BasicAttackStatusEffect', // apply a status effect X% of the time when doing a basic attack
-  SkillStatusEffect = 'SkillStatusEffect', // apply a status effect X% of the time when doing any non-connect skill
-  SpecialStatusEffect = 'SpecialStatusEffect', // apply a status effect X% of the time when doing a connect skill
+  StatusEffectOnHit = 'StatusEffectOnHit', // apply a status effect X% of the time when doing a hit of given hit type
 
   StatusEffectDuration = 'StatusEffectDuration', // buff or reduce status effect durations by a certain value (% does not apply here)
 
@@ -101,13 +114,9 @@ export enum PassiveEffectType {
   // MagicalAttackExplodes = 'MagicalAttackExplodes',
   // SkillExplodes = 'SkillExplodes',
 
-  GenerateElementOnBasicAttack = 'GenerateElementOnBasicAttack', // generate a specific element and a number of stacks on a basic attack
-  GenerateElementOnSkill = 'GenerateElementOnSkill', // generate a specific element and a number of stacks when using a skill
-  GenerateElementOnSpecial = 'GenerateElementOnSpecial', // generate a specific element and a number of stacks when doing a connect skill
+  GenerateElementOnHit = 'GenerateElementOnHit', // generate a specific element and a number of stacks on a given hit type
 
-  AttackElementBasic = 'AttackElementBasic', // treat all basic attacks additionally as X element
-  AttackElementSkill = 'AttackElementSkill', // treat all skills additionally as X element
-  AttackElementSpecial = 'AttackElementSpecial', // treat connect skill additionally as X element
+  AttackElement = 'AttackElement', // treat all hits of given hit type additionally as X element
 
   SurviveDeath = 'SurviveDeath', // survive death when dealt X% of max HP with Y% HP
   AdditionalHit = 'AdditionalHit', // all skills deal an additional X hits
@@ -223,14 +232,20 @@ export const commonEffectPropsT: t.Type<ICommonEffectProps> = t.partial({
 });
 
 export interface IPassiveEffectProps extends ICommonEffectProps {
+  hitType?: HitType;
+
   triggerWhen?: ActiveEffectTrigger;
+  triggerProps?: IActiveEffectTriggerProps;
   triggerActiveEffects?: IActiveEffect[];
 }
 
 export const passiveEffectPropsT: t.Type<IPassiveEffectProps> = t.intersection([
   commonEffectPropsT,
   t.partial({
+    hitType: hitTypeEnumT,
+
     triggerWhen: activeEffectTriggerEnumT,
+    triggerProps: activeEffectTriggerPropsT,
     triggerActiveEffects: t.array(
       t.recursion<IActiveEffect>('IActiveEffect', () => activeEffectT),
     ),

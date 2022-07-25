@@ -232,7 +232,7 @@ export const statusEffects: Record<StatusEffect, IStatusEffect> = {
           triggerWhen: ActiveEffectTrigger.OnRoundStart,
           triggerActiveEffects: [
             {
-              value: ActiveEffectType.StatBoost,
+              value: ActiveEffectType.StatBoostActive,
               target: EffectTarget.Self,
               props: { baseValue: -3, baseStat: Stat.HP, isPercent: true },
             },

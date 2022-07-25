@@ -91,7 +91,7 @@ export enum PassiveEffectType {
   OutgoingStatDamage = 'OutgoingStatDamage', // boost or reduce outgoing stat damage (e.g. +50% MAG means all MAG damage is boosted by an additional 50%)
   IncomingStatDamage = 'IncomingStatDamage', // boost or reduce incoming stat damage
 
-  OutgoingDamage = 'OutgoingSkillDamage', // boost or reduce outgoing damage of given hit type
+  OutgoingDamage = 'OutgoingDamage', // boost or reduce outgoing damage of given hit type
   OutgoingMonsterTypeDamage = 'OutgoingMonsterTypeDamage', // boost or reduce outgoing damage to a specific monster type
   IncomingMonsterTypeDamage = 'IncomingMonsterTypeDamage', // boost or reduce incoming damage from a specific monster type
 

@@ -14,9 +14,7 @@ import { intStringT } from './io-ts-integer-string-brand';
 import { IIdentifiable } from './IIdentifiable';
 
 // enums for abilities
-export enum AbilityTrigger {
-  Always = 'Always', // always active
-
+export enum ActiveEffectTrigger {
   OnSelfDeath = 'OnSelfDeath', // when this character dies
   OnAllyDeath = 'OnAllyDeath', // when an ally (not this character) dies
   OnEnemyDeath = 'OnEnemyDeath', // when an enemy dies
@@ -35,17 +33,32 @@ export enum AbilityTrigger {
   OnCombatStart = 'OnCombatStart', // when the combat starts
 }
 
-export const abilityTriggerEnumT: t.Type<AbilityTrigger> = enumT(
-  'AbilityTrigger',
-  AbilityTrigger,
+export const activeEffectTriggerEnumT: t.Type<ActiveEffectTrigger> = enumT(
+  'ActiveEffectTrigger',
+  ActiveEffectTrigger,
 );
 
-export enum AbilityEffect {
-  None = '', // used for editor
+export enum HitType {
+  BasicAttack = 'BasicAttack',
+  Skill = 'Skill',
+  Special = 'Special',
+}
 
-  // stat related
-  StatBoost = 'StatBoost', // boost a characters stat by the value given
-  ConvertStat = 'ConvertStat', // convert X of a stat to the stat given
+export const hitTypeEnumT: t.Type<HitType> = enumT('HitType', HitType);
+
+export interface IActiveEffectTriggerProps {
+  hitType?: HitType;
+}
+
+export const activeEffectTriggerPropsT: t.Type<IActiveEffectTriggerProps> =
+  t.partial({
+    hitType: hitTypeEnumT,
+  });
+
+export enum ActiveEffectType {
+  None = '',
+
+  StatBoostActive = 'StatBoostActive', // boost a characters stat by the value given
 
   HPRegen = 'HPRegen', // regenerate X hp when the trigger happens
   HPLeech = 'HPLeech', // leech X hp when the trigger happens (typically, OnXHit)
@@ -56,12 +69,29 @@ export enum AbilityEffect {
   // damage related
   Counterattack = 'Counterattack', // counterattack with a basic attack when trigger happens (probably, OnSelfHit)
 
+  Push = 'Push', // push a creature X tiles
+  Pull = 'Pull', // pull a creature X tiles
+
+  ApplyPassive = 'ApplyPassive',
+  ApplyStatusEffect = 'ApplyStatusEffect',
+}
+
+export const activeEffectTypeEnumT: t.Type<ActiveEffectType> = enumT(
+  'ActiveEffectType',
+  ActiveEffectType,
+);
+
+export enum PassiveEffectType {
+  None = '',
+
+  // stat related
+  StatBoost = 'StatBoost', // boost a characters stat by the value given
+  ConvertStat = 'ConvertStat', // convert X of a stat to the stat given
+
   OutgoingStatDamage = 'OutgoingStatDamage', // boost or reduce outgoing stat damage (e.g. +50% MAG means all MAG damage is boosted by an additional 50%)
   IncomingStatDamage = 'IncomingStatDamage', // boost or reduce incoming stat damage
 
-  OutgoingSkillDamage = 'OutgoingSkillDamage', // boost or reduce outgoing skill damage
-  OutgoingSpecialDamage = 'OutgoingSpecialDamage', // boost or reduce outgoing connect damage
-  OutgoingBasicAttackDamage = 'OutgoingBasicAttackDamage', // boost or reduce outgoing basic attack damage
+  OutgoingDamage = 'OutgoingDamage', // boost or reduce outgoing damage of given hit type
   OutgoingMonsterTypeDamage = 'OutgoingMonsterTypeDamage', // boost or reduce outgoing damage to a specific monster type
   IncomingMonsterTypeDamage = 'IncomingMonsterTypeDamage', // boost or reduce incoming damage from a specific monster type
 
@@ -71,13 +101,10 @@ export enum AbilityEffect {
   DamageBoostSingleTarget = 'DamageBoostSingleTarget', // boost or reduce damage to single target attacks (still applies if an AoE attack only hits one target)
   DamageBoostMultiTarget = 'DamageBoostMultiTarget', // boost or reduce damage that hit multiple targets (only applies if an AoE attack hits >1 target)
 
-  // status effect related
   ResistStatusEffect = 'ResistStatusEffect', // resist a status effect X% of the time (non-% values don't work here)
   InflictStatusEffect = 'InflictStatusEffect', // inflict a status element X% more of the time (non-% values don't work here)
 
-  BasicAttackStatusEffect = 'BasicAttackStatusEffect', // apply a status effect X% of the time when doing a basic attack
-  SkillStatusEffect = 'SkillStatusEffect', // apply a status effect X% of the time when doing any non-connect skill
-  SpecialStatusEffect = 'SpecialStatusEffect', // apply a status effect X% of the time when doing a connect skill
+  StatusEffectOnHit = 'StatusEffectOnHit', // apply a status effect X% of the time when doing a hit of given hit type
 
   StatusEffectDuration = 'StatusEffectDuration', // buff or reduce status effect durations by a certain value (% does not apply here)
 
@@ -87,14 +114,9 @@ export enum AbilityEffect {
   // MagicalAttackExplodes = 'MagicalAttackExplodes',
   // SkillExplodes = 'SkillExplodes',
 
-  // misc
-  GenerateElementOnBasicAttack = 'GenerateElementOnBasicAttack', // generate a specific element and a number of stacks on a basic attack
-  GenerateElementOnSkill = 'GenerateElementOnSkill', // generate a specific element and a number of stacks when using a skill
-  GenerateElementOnSpecial = 'GenerateElementOnSpecial', // generate a specific element and a number of stacks when doing a connect skill
+  GenerateElementOnHit = 'GenerateElementOnHit', // generate a specific element and a number of stacks on a given hit type
 
-  AttackElementBasic = 'AttackElementBasic', // treat all basic attacks additionally as X element
-  AttackElementSkill = 'AttackElementSkill', // treat all skills additionally as X element
-  AttackElementSpecial = 'AttackElementSpecial', // treat connect skill additionally as X element
+  AttackElement = 'AttackElement', // treat all hits of given hit type additionally as X element
 
   SurviveDeath = 'SurviveDeath', // survive death when dealt X% of max HP with Y% HP
   AdditionalHit = 'AdditionalHit', // all skills deal an additional X hits
@@ -108,18 +130,20 @@ export enum AbilityEffect {
   NegateHits = 'NegateHits', // negate a certain number of hits
   Stun = 'Stun', // stunned and cannot act
   Silence = 'Silence', // silenced and cannot do skills
-  Push = 'Push', // push a creature X tiles
-  Pull = 'Pull', // pull a creature X tiles
+
+  TriggerActive = 'TriggerActive',
 }
 
-export const abilityEffectEnumT: t.Type<AbilityEffect> = enumT(
-  'AbilityEffect',
-  AbilityEffect,
+export const passiveEffectTypeEnumT: t.Type<PassiveEffectType> = enumT(
+  'PassiveEffectType',
+  PassiveEffectType,
 );
 
-export enum AbilityTarget {
+export enum EffectTarget {
   Self = 'Self',
   All = 'All',
+  SkillTarget = 'SkillTarget',
+  TriggerTarget = 'TriggerTarget',
 
   AllEnemies = 'AllEnemies',
   AllAllies = 'AllAllies',
@@ -137,9 +161,9 @@ export enum AbilityTarget {
   AllyNotHealer = 'AllyNotHealer',
 }
 
-export const abilityTargetEnumT: t.Type<AbilityTarget> = enumT(
-  'AbilityTarget',
-  AbilityTarget,
+export const effectTargetEnumT: t.Type<EffectTarget> = enumT(
+  'EffectTarget',
+  EffectTarget,
 );
 
 export enum AbilityCondition {
@@ -177,8 +201,8 @@ export const abilityConditionEnumT: t.Type<AbilityCondition> = enumT(
 
 // interfaces for ability props / abilities
 
-export interface IAbilityEffectProps {
-  effectTarget?: AbilityTarget; // the target of the ability (used for effects like leech)
+export interface ICommonEffectProps {
+  effectTarget?: EffectTarget; // the target of the ability (used for effects like leech)
 
   isPercent?: boolean; // if this ability effect should change by a percent, this is true
   baseValue?: number; // the base value of the effect (used for effects that rely on stats)
@@ -192,8 +216,8 @@ export interface IAbilityEffectProps {
   surviveDeathReboundValue?: number; // the survive HP rebound value
 }
 
-export const abilityEffectPropsT: t.Type<IAbilityEffectProps> = t.partial({
-  effectTarget: abilityTargetEnumT,
+export const commonEffectPropsT: t.Type<ICommonEffectProps> = t.partial({
+  effectTarget: effectTargetEnumT,
 
   isPercent: t.boolean,
   baseValue: t.number,
@@ -206,6 +230,44 @@ export const abilityEffectPropsT: t.Type<IAbilityEffectProps> = t.partial({
   element: elementEnumT,
   surviveDeathReboundValue: t.number,
 });
+
+export interface IPassiveEffectProps extends ICommonEffectProps {
+  hitType?: HitType;
+
+  triggerWhen?: ActiveEffectTrigger;
+  triggerProps?: IActiveEffectTriggerProps;
+  triggerActiveEffects?: IActiveEffect[];
+}
+
+export const passiveEffectPropsT: t.Type<IPassiveEffectProps> = t.intersection([
+  commonEffectPropsT,
+  t.partial({
+    hitType: hitTypeEnumT,
+
+    triggerWhen: activeEffectTriggerEnumT,
+    triggerProps: activeEffectTriggerPropsT,
+    triggerActiveEffects: t.array(
+      t.recursion<IActiveEffect>('IActiveEffect', () => activeEffectT),
+    ),
+  }),
+]);
+
+export interface IActiveEffectProps extends ICommonEffectProps {
+  applyPassiveEffects?: IPassiveEffect[];
+  duration?: number; // duration of the status effect or passive effect
+  applyStatusEffectProbability?: number; // probability of applying the status effect (0-100)
+}
+
+export const activeEffectPropsT: t.Type<IActiveEffectProps> = t.intersection([
+  commonEffectPropsT,
+  t.partial({
+    applyPassiveEffects: t.array(
+      t.recursion<IPassiveEffect>('IPassiveEffect', () => passiveEffectT),
+    ),
+    duration: t.number,
+    applyStatusEffectProbability: t.number,
+  }),
+]);
 
 export interface IAbilityConditionProps {
   isPercent?: boolean; // whether or not the condition relies on a percent
@@ -240,16 +302,28 @@ export const abilityConditionPropsT: t.Type<IAbilityConditionProps> = t.partial(
   },
 );
 
-export interface IAbilityEffect {
-  value: AbilityEffect;
-  props: IAbilityEffectProps;
-  target: AbilityTarget;
+export interface IActiveEffect {
+  value: ActiveEffectType;
+  props: IActiveEffectProps;
+  target: EffectTarget;
 }
 
-export const abilityEffectT: t.Type<IAbilityEffect> = t.type({
-  value: abilityEffectEnumT,
-  props: abilityEffectPropsT,
-  target: abilityTargetEnumT,
+export const activeEffectT: t.Type<IActiveEffect> = t.type({
+  value: activeEffectTypeEnumT,
+  props: activeEffectPropsT,
+  target: effectTargetEnumT,
+});
+
+export interface IPassiveEffect {
+  value: PassiveEffectType;
+  props: IPassiveEffectProps;
+  target: EffectTarget;
+}
+
+export const passiveEffectT: t.Type<IPassiveEffect> = t.type({
+  value: passiveEffectTypeEnumT,
+  props: passiveEffectPropsT,
+  target: effectTargetEnumT,
 });
 
 export interface IAbilityCondition {
@@ -265,8 +339,7 @@ export const abilityConditionT: t.Type<IAbilityCondition> = t.type({
 export interface IAbilityUtility {
   name: string;
   description: string;
-  trigger: AbilityTrigger;
-  effects: IAbilityEffect[];
+  effects: IPassiveEffect[];
   conditions: IAbilityCondition[];
 }
 
@@ -282,8 +355,7 @@ export const abilityT: t.Type<IAbility> = t.recursion('Ability', () =>
     name: t.string,
     description: t.string,
 
-    trigger: abilityTriggerEnumT,
-    effects: t.array(abilityEffectT),
+    effects: t.array(passiveEffectT),
     conditions: t.array(abilityConditionT),
 
     abilityChanges: t.record(
@@ -291,8 +363,7 @@ export const abilityT: t.Type<IAbility> = t.recursion('Ability', () =>
       t.type({
         name: t.string,
         description: t.string,
-        trigger: abilityTriggerEnumT,
-        effects: t.array(abilityEffectT),
+        effects: t.array(passiveEffectT),
         conditions: t.array(abilityConditionT),
         shouldHide: t.boolean,
       }),

@@ -62,9 +62,6 @@ export enum StatusEffect {
   Regen = 'Regen', // heal every turn
   Shield = 'Shield', // lower incoming physical damage
 
-  Push = 'Push', // push the enemy back X spaces
-  Pull = 'Pull', // pull the enemy forward X spaces
-
   // stat buffs
   HPUp = 'HPUp',
   ATKUp = 'ATKUp',
